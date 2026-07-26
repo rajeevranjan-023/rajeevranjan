@@ -1,0 +1,82 @@
+/* =====================================
+   VARIABLES
+   Design tokens shared across the whole
+   site. Editing a value here updates it
+   everywhere it's used — no hunting
+   through component files.
+===================================== */
+
+/* Google Fonts:
+   Orbitron    -> headings / display
+   Rajdhani    -> body text
+   JetBrains Mono -> labels, stats, code-style text */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root{
+  /* ---- LIGHT ROBOTIC MODE (default theme) ---- */
+  --bg: #eef2f6;
+  --bg-grid: #dfe7ee;
+  --panel: rgba(255,255,255,0.62);
+  --panel-solid: #ffffff;
+  --panel-border: rgba(47,111,237,0.18);
+  --ink: #16202c;
+  --ink-soft: #45505c;
+  --muted: #7c8894;
+  --accent: #2f6fed;      /* soft blue */
+  --accent-2: #00c2d1;    /* cyan */
+  --accent-soft: #eaf1ff;
+  --neon: #33e6ff;
+  --danger: #ff5470;
+  --ok: #17c987;
+  --shadow: 0 10px 40px rgba(31,63,110,0.10);
+  --glass-blur: blur(18px);
+
+  /* fixed glow colors — same in both themes by original design,
+     kept as RGB triples so any element can build its own rgba(alpha) */
+  --neon-rgb: 51,230,255;
+  --brand-blue-rgb: 47,111,237;
+
+  /* radius scale — reused instead of repeating raw px everywhere */
+  --radius-lg: 22px;
+  --radius-md: 14px;
+  --radius-sm: 8px;
+  --radius-icon: 12px;   /* brand mark, cert icon */
+  --radius-input: 10px;  /* buttons, inputs, icon buttons */
+  --radius-pill: 20px;   /* pills / badges */
+
+  /* transition scale — reused instead of repeating "all .25s ease" etc */
+  --transition-fast: .2s ease;
+  --transition-base: .25s ease;
+  --transition-slow: .3s ease;
+
+  /* fonts */
+  --font-display: 'Orbitron', sans-serif;
+  --font-body: 'Rajdhani', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* layout tokens referenced by footer.css / header.css —
+     these were missing from the uploaded file, restored here
+     with the same values the original working site used */
+  --container-max: 1180px;
+  --floating-gap: 26px;
+  --back-top-size: 46px;
+  --fab-size: 52px;
+  --z-header: 90;
+}
+
+/* ---- DARK ROBOTIC MODE ---- */
+[data-theme="dark"]{
+  --bg: #060a10;
+  --bg-grid: #0c141d;
+  --panel: rgba(16,22,32,0.60);
+  --panel-solid: #0d141d;
+  --panel-border: rgba(51,230,255,0.16);
+  --ink: #e8f3fb;
+  --ink-soft: #aebccb;
+  --muted: #64748b;
+  --accent: #4d8bff;
+  --accent-2: #33e6ff;
+  --accent-soft: rgba(51,230,255,0.08);
+  --neon: #33e6ff;
+  --shadow: 0 10px 50px rgba(0,0,0,0.55);
+}

@@ -1,0 +1,395 @@
+/* =====================================
+   OPTIMIZED BLOCKS
+   Replace these sections only.
+===================================== */
+
+/* ---- Timeline Dot ----
+   Note:
+   Slightly reduced glow for better performance.
+*/
+.timeline-dot{
+  position:absolute;
+  left:-34px;
+  top:4px;
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  background:var(--panel-solid);
+  border:2px solid var(--accent-2);
+  
+}
+
+/* ---- Skill Card ----
+   Note:
+   Replaced transition:all with specific properties.
+*/
+.skill-chip{
+  position:relative;
+  aspect-ratio:1/1;
+  border-radius:16px;
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  cursor:default;
+  overflow:visible;
+  justify-content: center;
+}
+
+.skill-name{
+    text-align:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* ---- Skill Icon ----
+   Note:
+   Animate only required properties.
+*/
+.skill-chip i{
+  font-size:26px;
+  color:var(--ink-soft);
+  transition:
+    color var(--transition-slow),
+    transform var(--transition-slow),
+    text-shadow var(--transition-slow);
+}
+
+/* ---- Skill Hover ----
+   Slightly lighter transform and shadow.
+*/
+.skill-chip:hover{
+  transform:translateY(-6px) scale(1.04);
+  border-color:var(--accent-2);
+  box-shadow:0 10px 22px rgba(var(--neon-rgb),.22);
+}
+
+/* ---- Skill Icon Hover ----
+   Note:
+   Reduced glow with nearly identical appearance.
+*/
+.skill-chip:hover i{
+  color:var(--accent-2);
+  transform:scale(1.12);
+  text-shadow:0 0 12px rgba(var(--neon-rgb),.5);
+}
+
+/* ---- Skill Tooltip ----
+   Note:
+   Replace transition:all with GPU-friendly properties.
+*/
+.skill-tooltip{
+  position:absolute;
+  bottom:calc(100% + 10px);
+  left:50%;
+  transform:translateX(-50%) translateY(6px);
+  padding:6px 12px;
+  border-radius:var(--radius-sm);
+  background:var(--ink);
+  color:#fff;
+  font-size:11.5px;
+  font-family:var(--font-mono);
+  white-space:nowrap;
+  opacity:0;
+  pointer-events:none;
+  z-index:5;
+  transition:
+    opacity var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+[data-theme="dark"] .skill-tooltip{
+  background:var(--accent-2);
+  color:#00131a;
+}
+
+.skill-chip:hover .skill-tooltip{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
+}
+
+/* ---- Empty State Icon ----
+   Note:
+   Slower floating animation for smoother rendering.
+*/
+.empty-state .icon-orb{
+  width:64px;
+  height:64px;
+  margin:0 auto 22px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--accent-soft);
+  color:var(--accent-2);
+  font-size:24px;
+  border:1px dashed var(--panel-border);
+  animation:float 5s ease-in-out infinite;
+}
+
+/* =====================================
+   HOVER FIX
+   Add at the end of pages.css
+===================================== */
+
+/* Quick Cards */
+.quick-card{
+  border:1px solid var(--panel-border);
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  justify-content: center;
+  align-items: center;
+  height:90px;
+  padding:20px 20px 20px 20px;
+}
+
+.quick-card:hover{
+  transform:translateY(-6px);
+  border-color:var(--accent-2);
+  box-shadow:0 12px 24px rgba(var(--neon-rgb),.18);
+}
+
+/* Skill Cards */
+.skill-chip{
+  border:1px solid var(--panel-border);
+  transition:
+    transform var(--transition-slow),
+    border-color var(--transition-slow),
+    box-shadow var(--transition-slow);
+}
+
+.skill-chip:hover{
+  transform:translateY(-6px) scale(1.04);
+  border-color:var(--accent-2);
+  box-shadow:0 10px 22px rgba(var(--neon-rgb),.22);
+}
+
+.skill-chip i{
+  transition:
+    color var(--transition-slow),
+    transform var(--transition-slow),
+    text-shadow var(--transition-slow);
+}
+
+.skill-chip:hover i{
+  color:var(--accent-2);
+  transform:scale(1.12);
+  text-shadow:0 0 12px rgba(var(--neon-rgb),.5);
+}
+/* =====================================
+   RESTORED SECTIONS
+===================================== */
+
+/* ---- quick nav cards (index) ---- */
+.quick-card i{ font-size: 22px; color: var(--accent-2); margin-bottom: 14px; display: block; }
+.quick-card h3{ font-size: 16px; margin-bottom: 6px; }
+.quick-card p{ font-size: 13.5px; margin: 0; }
+
+/* ---- timeline (education / experience) ---- */
+.timeline{ position: relative; padding-left: 34px; }
+.timeline::before{
+  content: '';
+  position: absolute;
+  left: 8px; top: 6px; bottom: 6px;
+  width: 2px;
+  background: linear-gradient(var(--accent), var(--accent-2));
+  opacity: .4;
+}
+.timeline-item{ position: relative; padding-bottom: 34px; }
+.timeline-item:last-child{ padding-bottom: 0; }
+.timeline-date{
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent-2);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.timeline-item h3{ 
+  font-size: 18px; 
+  margin: 6px 0 4px; }
+
+.timeline-item .org{ 
+  color: var(--ink-soft); 
+  background-color: #a5a5a549;
+  border-radius: 6px;
+  width: 300px;
+  font-weight: 600; 
+  font-size: 14.5px; 
+  margin-bottom: 8px;
+  padding-left:8px ;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.25);
+  border-bottom: 1px solid rgba(109, 109, 109, 0.18);
+ }
+
+.org:hover{
+  border-radius: 6px;
+  border: 2px solid rgba(68, 0, 255, 0.196);
+}
+
+
+.timeline-badge{
+  display: inline-block;
+  margin-top: 10px;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+/* ---- skills grid wrapper ---- */
+.skill-cat{ margin-bottom: 40px; }
+.skill-cat h3{
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+.skill-grid{ display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+.skill-chip span{ font-size: 11px; font-family: var(--font-mono); color: var(--muted); }
+
+/* ---- project cards ---- */
+.project-card{ padding: 26px; display: flex; flex-direction: column; gap: 14px; }
+.project-tag{
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--accent-2);
+  text-transform: uppercase;
+  letter-spacing: .14em;
+}
+.project-card h3{ font-size: 20px; }
+.project-meta{ display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+.tech-pill{
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.project-list{ margin: 6px 0 0; padding-left: 18px; color: var(--ink-soft); font-size: 14.5px; }
+.project-list li{ margin-bottom: 6px; }
+
+/* ---- certification / achievement cards ---- */
+.cert-card{ padding: 22px; display: flex; gap: 16px; align-items: flex-start; }
+.cert-icon{
+  width: 48px; height: 48px;
+  border-radius: var(--radius-icon);
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 18px; flex: 0 0 auto;
+}
+.cert-card h3{ font-size: 16px; margin-bottom: 4px; }
+.cert-card .org{ font-size: 13.5px; color: var(--accent); font-weight: 600; }
+.cert-card .date{ font-family: var(--font-mono); font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+/* ---- contact page ---- */
+.contact-grid{ display: grid; grid-template-columns: .9fr 1.1fr; gap: 26px; }
+.contact-row{ display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--panel-border); }
+.contact-row:last-child{ border-bottom: none; }
+.contact-row i{
+  width: 38px; height: 38px;
+  border-radius: var(--radius-input);
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+}
+.contact-row a{ color: var(--ink); font-weight: 600; }
+
+.form-field{ margin-bottom: 16px; }
+.form-field label{
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 6px;
+}
+.form-field input,
+.form-field textarea{
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: var(--radius-input);
+  border: 1px solid var(--panel-border);
+  background: var(--panel-solid);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  resize: vertical;
+}
+.form-field input:focus,
+.form-field textarea:focus{
+  outline: none;
+  border-color: var(--accent-2);
+  box-shadow: 0 0 0 3px rgba(var(--neon-rgb), .15);
+}
+
+/* ---- empty state text (icon-orb already defined above) ---- */
+.empty-state{ text-align: center; padding: 60px 30px; }
+.empty-state h3{ font-size: 19px; margin-bottom: 8px; }
+.empty-state p{ max-width: 420px; margin: 0 auto 20px; font-size: 14.5px; }
+
+.status-pill{
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--panel-solid);
+  border: 1px solid var(--panel-border);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 18px;
+}
+.status-pill .dot{
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--accent-2);
+  box-shadow: 0 0 8px var(--accent-2);
+  animation: pulse-dot 2s infinite;
+}
+
+/* ---- gallery reserved slots ---- */
+.slot-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.slot-card{
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-md);
+  border: 1.5px dashed var(--panel-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: var(--panel);
+}
+.slot-card i{ font-size: 20px; color: var(--panel-border); }
+
+/* ---- 404 page ---- */
+.error-wrap{ text-align: center; padding: 60px 20px; }
+.error-code{
+  font-family: var(--font-display);
+  font-size: clamp(70px, 14vw, 150px);
+  font-weight: 900;
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  line-height: 1;
+}

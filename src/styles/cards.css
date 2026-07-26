@@ -1,0 +1,62 @@
+/* =====================================
+   GLASS PANEL
+===================================== */
+
+.panel{
+
+    position:relative;
+
+    background:var(--panel);
+
+    border:1px solid var(--panel-border);
+
+    border-radius:var(--radius-lg);
+
+    box-shadow:var(--shadow);
+
+    overflow:hidden;
+}
+
+/* ---------- HUD Corners ---------- */
+
+.panel::before,
+.panel::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:16px;
+    height:16px;
+
+    opacity:.6;
+
+    border:2px solid var(--accent-2);
+}
+
+.panel::before{
+
+    top:-1px;
+    left:-1px;
+
+    border-right:none;
+    border-bottom:none;
+
+    border-top-left-radius:var(--radius-lg);
+}
+
+.panel::after{
+
+    right:-1px;
+    bottom:-1px;
+
+    border-left:none;
+    border-top:none;
+
+    border-bottom-right-radius:var(--radius-lg);
+}
+
+.panel-pad{
+
+    padding:28px;
+}

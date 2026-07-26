@@ -1,0 +1,76 @@
+/* =====================================
+   LAYOUT
+   The page skeleton: app shell, main
+   column, content wrapper, and reusable
+   grid utility classes.
+===================================== */
+
+.app-shell{
+  display: flex;
+  min-height: 100vh;
+}
+
+/* mobile nav checkbox hack — invisible input, driven purely by CSS */
+.nav-toggle-input{
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* sidebar slides in when checked — works on ALL screen sizes now,
+   not just mobile (sidenav is fixed/hidden by default in sidebar.css) */
+.nav-toggle-input:checked ~ .app-shell .sidenav{
+  transform: translateX(0);
+}
+
+/* dark backdrop behind the open sidebar — global, all screen sizes */
+.mobile-nav-backdrop{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.4);
+  z-index: 99;
+  display: none;
+}
+.nav-toggle-input:checked ~ .mobile-nav-backdrop{
+  display: block;
+}
+
+.main-col{
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left .35s ease;
+}
+
+/* main content shifts right when the sidebar is open */
+.nav-toggle-input:checked ~ .app-shell .main-col{
+  margin-left: 230px;
+}
+
+.content{
+  flex: 1;
+  padding: 34px 40px 70px;
+  max-width: 1180px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ---- reusable grid utilities ---- */
+.grid-2{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+.grid-3{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.grid-4{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+
+/* ---- section heading (used above most content blocks) ---- */
+.section-head{
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin: 54px 0 22px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.section-head h2{
+  font-size: 26px;
+  margin: 0;
+}

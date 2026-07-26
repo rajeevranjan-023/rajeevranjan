@@ -1,0 +1,227 @@
+/* =====================================
+   HERO SECTION
+===================================== */
+
+.hero{
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:36px;
+    align-items:center;
+    padding:20px 0 10px;
+}
+
+/* =====================================
+   HERO TEXT
+===================================== */
+
+.hero-eyebrow{
+    margin-bottom:14px;
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:.25em;
+    text-transform:uppercase;
+    color:var(--accent-2);
+}
+
+.hero h1{
+    margin-bottom:16px;
+    font-size:clamp(32px,4.4vw,54px);
+    line-height:1.08;
+}
+
+/*
+Gradient text gives premium look
+No performance issue because it is static.
+*/
+
+.hero h1 em{
+    font-style:normal;
+    color:transparent;
+    background:
+        linear-gradient(
+            120deg,
+            var(--accent),
+            var(--accent-2)
+        );
+    -webkit-background-clip:text;
+    background-clip:text;
+}
+
+.hero .lead{
+    max-width:520px;
+    margin-bottom:26px;
+    font-size:17px;
+}
+/* =====================================
+   CTA BUTTONS
+===================================== */
+.hero-cta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+}
+
+/* =====================================
+   TYPING TEXT
+===================================== */
+
+.typed-role{
+    display:inline-block;
+    width:20ch;
+    overflow:hidden;
+    white-space:nowrap;
+    vertical-align:bottom;
+    font-family:var(--font-mono);
+    font-size:15px;
+    color:var(--accent);
+    border-right:2px solid var(--accent-2);
+    animation:
+        typing 6s steps(20) infinite,
+        blink-caret 1s step-end infinite;
+}
+
+/* =====================================
+   ROBOT CORE
+===================================== */
+
+.bot-core{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:100%;
+    max-width:360px;
+    aspect-ratio:1;
+    margin:auto;
+}
+
+/* =====================================
+   ROTATING RINGS
+===================================== */
+
+.bot-ring{
+    position:absolute;
+    border-radius:50%;
+    border:1.5px dashed var(--panel-border);
+}
+
+/* Outer Ring */
+
+.bot-ring.r1{
+    inset:0;
+}
+
+/* Middle Ring */
+
+.bot-ring.r2{
+    inset:32px;
+    border-style:solid;
+    border-color:var(--accent-soft);
+}
+
+/* Inner Ring */
+
+.bot-ring.r3{
+    inset:64px;
+    border-color:rgba(var(--neon-rgb),.25);
+}
+
+/* =====================================
+   ROBOT CORE CENTER
+===================================== */
+
+.bot-core-inner{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:44%;
+    aspect-ratio:1;
+    border-radius:50%;
+}
+
+/*
+Hover glow only appears when
+*/
+
+.bot-core-inner:hover::before{
+    content:"";
+    position:absolute;
+    inset:-5px;
+    border-radius:50%;
+    background:
+        conic-gradient(
+            from 0deg,
+            #ff2fd0,
+            #487bfc,
+            #7cff2f,
+            #ffe62f,
+            #f52f2f
+        );
+    opacity: 1;
+    filter:blur(6px);
+    animation:spin 3.5s linear infinite;
+}
+
+/* =====================================
+   ROBOT LOGO
+===================================== */
+
+.bot-core-logo{
+    position:relative;
+    z-index:1;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+    box-shadow:
+        0 0 16px rgba(0,0,0,.22);
+}
+
+/* =====================================
+   ORBIT DOT
+===================================== */
+/* 
+.orbit-dot{
+    position:absolute;
+    top:-4px;
+    left:calc(50% - 4px);
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--accent-2);
+    box-shadow:
+        0 0 8px var(--accent-2);
+} */
+
+/* =====================================
+   STATISTICS STRIP
+===================================== */
+
+.stat-strip{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+    margin-top:34px;
+}
+
+.stat-box{
+    padding:18px 10px;
+    text-align:center;
+}
+
+.stat-num{
+    font-family:var(--font-display);
+    font-size:28px;
+    font-weight:700;
+    color:var(--accent);
+}
+
+.stat-label{
+    margin-top:4px;
+    font-family:var(--font-mono);
+    font-size:10.5px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--muted);
+}

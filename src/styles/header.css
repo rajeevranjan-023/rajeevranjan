@@ -1,0 +1,71 @@
+/* =====================================
+   HEADER
+===================================== */
+
+.topbar{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:var(--z-header);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:16px;
+
+    padding:14px 30px;
+
+    background:var(--panel);
+
+    backdrop-filter:var(--glass-blur);
+    -webkit-backdrop-filter:var(--glass-blur);
+
+    border-bottom:1px solid var(--panel-border);
+}
+
+/* ---------- Left ---------- */
+
+.topbar-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+}
+
+.topbar-title{
+
+    font-family:var(--font-mono);
+
+    font-size:12px;
+
+    letter-spacing:.18em;
+
+    text-transform:uppercase;
+
+    color:var(--muted);
+}
+
+/* ---------- Right ---------- */
+
+.topbar-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+.menu-toggle{
+
+    display:flex;
+
+    cursor:pointer;
+}
