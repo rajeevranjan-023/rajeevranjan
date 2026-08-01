@@ -8,13 +8,12 @@ export default function Gallery() {
       <div className="eyebrow reveal">Visual Archive</div>
       <h1 className="reveal">Gallery</h1>
       <p className="reveal" style={{ maxWidth: 600 }}>
-        Screenshots, circuit shots, and demo clips of the builds above will live here. The frame
-        is wired up and ready — just drop images in <span className="mono">/images/gallery/</span>{' '}
-        and swap them into the slots below.
+        Screenshots, circuit shots, and demo clips of the builds above will live here. <br></br>
+        <span className="mono">updated soon!</span>{' '}
       </p>
 
       <div className="section-head reveal">
-        <h2>Reserved slots</h2>
+        <h2>sections</h2>
       </div>
       <div className="slot-grid reveal">
         <div className="slot-card">
@@ -50,11 +49,9 @@ export default function Gallery() {
         <div className="icon-orb">
           <i className="fa-solid fa-camera-retro"></i>
         </div>
-        <h3>No images yet — that's fine.</h3>
-        <p>
-          Nothing's been faked here. Once you have real project photos or screenshots, they slot
-          straight into this grid.
-        </p>
+        <h3>No images yet!
+        </h3>
+       
       </div>
     </>
   )

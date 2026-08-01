@@ -9,7 +9,7 @@ export default function Home() {
     <>
       <section className="hero reveal">
         <div>
-          <div className="hero-eyebrow">// SYSTEM BOOT · PORTFOLIO OS v1.0</div>
+          <div className="hero-eyebrow"></div>
           <h1>
             Hi, I'm <em>Rajeev Ranjan</em>
             <br />

@@ -15,8 +15,8 @@ function Footer() {
             </div>
           </div>
           <p className="footer-tagline">
-            CSE undergraduate building automation systems and full-stack web apps, one clean
-            commit at a time.
+           CSE undergraduate exploring embedded systems, 
+           automation, and full-stack web development through hands-on projects
           </p>
           <div className="footer-social">
             <a

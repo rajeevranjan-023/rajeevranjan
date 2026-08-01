@@ -41,22 +41,18 @@ export default function Certifications() {
             Maintaining an 8.96 CGPA through the CSE program at Dr. Hari Singh Gour Central
             University
           </li>
-          <li>Delivered a fully automated hardware control project with zero manual intervention</li>
         </ul>
       </div>
 
       <div className="panel reveal empty-state" style={{ marginTop: 26 }}>
         <div className="status-pill">
-          <span className="dot"></span>Slot Reserved
+          <span className="dot"></span>Udated soon!
         </div>
         <div className="icon-orb">
           <i className="fa-solid fa-certificate"></i>
         </div>
         <h3>More badges incoming.</h3>
-        <p>
-          Space is ready here for the next certification or award — it'll drop straight into the
-          grid above.
-        </p>
+      
       </div>
     </>
   )

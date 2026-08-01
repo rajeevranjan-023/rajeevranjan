@@ -8,10 +8,7 @@ export default function Experience() {
     <>
       <div className="eyebrow reveal">Service Record</div>
       <h1 className="reveal">Experience</h1>
-      <p className="reveal" style={{ maxWidth: 600 }}>
-        No formal job roles yet — I'm early in my CSE degree. Here's the real-world, hands-on
-        work logged so far, with room reserved below for what's next.
-      </p>
+      
 
       <div className="timeline reveal" style={{ marginTop: 26 }}>
         <div className="timeline-item">
@@ -29,19 +26,17 @@ export default function Experience() {
 
       <div className="panel reveal empty-state" style={{ marginTop: 30 }}>
         <div className="status-pill">
-          <span className="dot"></span>Slot Reserved
+          <span className="dot"></span>Updated soon!
         </div>
         <div className="icon-orb">
           <i className="fa-solid fa-briefcase"></i>
         </div>
         <h3>Next role goes here.</h3>
         <p>
-          This section is built and ready — internships, freelance work, or a first full-time
-          role will slot straight into the timeline above with dates, org name, and
-          responsibilities.
+          This section will be updated with internships, freelance work, and professional experience.
         </p>
         <Link to="/contact" className="btn btn-ghost">
-          <i className="fa-solid fa-paper-plane"></i> Open to opportunities — get in touch
+          <i className="fa-solid fa-paper-plane"></i> Let's Connect
         </Link>
       </div>
     </>
