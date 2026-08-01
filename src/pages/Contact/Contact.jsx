@@ -13,7 +13,7 @@ export default function Contact() {
 
   return (
     <>
-      <div className="eyebrow reveal">Open Channel</div>
+      <div className="eyebrow reveal">Contact</div>
       <h1 className="reveal">Contact</h1>
 
       <div className="contact-grid reveal" style={{ marginTop: 20 }}>
@@ -38,7 +38,7 @@ export default function Contact() {
             <div>
               <div style={{ fontSize: 12, color: 'var(--muted)' }}>LinkedIn</div>
               <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer">
-                Add your profile URL
+                LinkedIn Profile
               </a>
             </div>
           </div>
@@ -47,7 +47,7 @@ export default function Contact() {
             <div>
               <div style={{ fontSize: 12, color: 'var(--muted)' }}>GitHub</div>
               <a href="https://github.com/" target="_blank" rel="noopener noreferrer">
-                Add your profile URL
+                GitHub Profile
               </a>
             </div>
           </div>
@@ -55,7 +55,9 @@ export default function Contact() {
 
         <div className="panel panel-pad">
           <h3>Send a message</h3>
-          <form action="mailto:23.rajeevranjan.23@gmail.com" method="post" encType="text/plain">
+
+
+          <form >
             <div className="form-field">
               <label>Name</label>
               <input
@@ -93,9 +95,6 @@ export default function Contact() {
               <i className="fa-solid fa-paper-plane"></i> Send Message
             </button>
           </form>
-          <p style={{ fontSize: 12, marginTop: 10 }}>
-            This opens your email client — there's no backend attached yet.
-          </p>
         </div>
       </div>
     </>

@@ -2,16 +2,16 @@ import useDocumentTitle from '../../hooks/useDocumentTitle.js'
 
 const DRAFTS = [
   {
-    title: 'Building the water-level control loop',
-    blurb: 'A behind-the-scenes look at the sensor feedback logic — coming soon.',
+    title:"",
+    blurb:"",
   },
   {
-    title: 'REST APIs, the plain-English way',
-    blurb: 'Notes from building the weather app — coming soon.',
+    title: '',
+    blurb: '',
   },
   {
-    title: "What I'm learning in DSA right now",
-    blurb: 'Running notes from coursework — coming soon.',
+    title: "",
+    blurb: '',
   },
 ]
 
@@ -22,10 +22,7 @@ export default function Blog() {
     <>
       <div className="eyebrow reveal">Transmission Log</div>
       <h1 className="reveal">Blog</h1>
-      <p className="reveal" style={{ maxWidth: 600 }}>
-        Write-ups on builds, what broke, and what I learned fixing it. The layout below is ready
-        to receive posts.
-      </p>
+
 
       <div className="grid-3 reveal" style={{ marginTop: 10 }}>
         {DRAFTS.map((d) => (
@@ -44,11 +41,8 @@ export default function Blog() {
         <div className="icon-orb">
           <i className="fa-solid fa-feather-pointed"></i>
         </div>
-        <h3>First post hasn't shipped yet.</h3>
-        <p>
-          These three drafts are placeholders, not real posts — flagged that way on purpose.
-          Publish the first one and it replaces a draft card here.
-        </p>
+        <h3>updated soon!</h3>
+        
       </div>
     </>
   )
