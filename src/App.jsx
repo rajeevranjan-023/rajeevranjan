@@ -2,6 +2,9 @@ import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout/Layout.jsx'
 
+import { useEffect } from "react";
+import { wakeUpServer } from "./api";
+
 // Route-level code splitting — each page is only downloaded when the
 // user actually navigates to it, instead of bundling all 11 pages
 // into one big chunk up front.
@@ -23,6 +26,15 @@ function RouteFallback() {
 }
 
 export default function App() {
+
+  useEffect(() => {                             // Wake up the backend server earlier
+    wakeUpServer()                              // automatically called when the app is loaded
+    .catch((err) => {
+      console.log("Backend wake-up failed:", err);
+    });
+  }, []);
+
+
   return (
     <Suspense fallback={<RouteFallback />}>
       <Routes>
