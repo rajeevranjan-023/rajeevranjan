@@ -1,15 +1,30 @@
 import { useState, useCallback } from 'react'
 import useDocumentTitle from '../../hooks/useDocumentTitle.js'
+import { submitContact } from '../../api.js'
 
 export default function Contact() {
   useDocumentTitle('Contact')
 
   const [form, setForm] = useState({ name: '', email: '', message: '' })
+  let handleInput = (event)=>{
+    setForm((currData)=>{
+      return{...currData, [event.target.name]: event.target.value}
+    })
+  }
 
-  const handleChange = useCallback((e) => {
-    const { name, value } = e.target
-    setForm((prev) => ({ ...prev, [name]: value }))
-  }, [])
+  let handleSubmit = async(event)=>{
+    event.preventDefault();
+    console.log("Submit Clicked");
+    console.log(form);
+    console.log("1");
+    const res = await submitContact(form);
+    console.log("2");
+    console.log(res);
+    // await submitContact(form);
+    setForm({ name: '', email: '', message: '' });
+  }
+
+  
 
   return (
     <>
@@ -56,8 +71,8 @@ export default function Contact() {
         <div className="panel panel-pad">
           <h3>Send a message</h3>
 
-
-          <form >
+          {/* ========================================= */}
+          <form onSubmit={handleSubmit}>
             <div className="form-field">
               <label>Name</label>
               <input
@@ -65,7 +80,7 @@ export default function Contact() {
                 name="name"
                 placeholder="Your name"
                 value={form.name}
-                onChange={handleChange}
+                onChange={handleInput}
                 required
               />
             </div>
@@ -76,7 +91,7 @@ export default function Contact() {
                 name="email"
                 placeholder="you@example.com"
                 value={form.email}
-                onChange={handleChange}
+                onChange={handleInput}
                 required
               />
             </div>
@@ -87,7 +102,7 @@ export default function Contact() {
                 rows={5}
                 placeholder="What's on your mind?"
                 value={form.message}
-                onChange={handleChange}
+                onChange={handleInput}
                 required
               ></textarea>
             </div>
