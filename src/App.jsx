@@ -1,9 +1,12 @@
-import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout/Layout.jsx'
 
-import { useEffect } from "react";
-import { wakeUpServer } from "./api";
+import { lazy, Suspense, useEffect, useState } from "react";
+
+import { wakeUpServer, saveLocation } from "./api";
+import { getLocationData } from "./utils/location.js";
+
+import './app.css'
 
 // Route-level code splitting — each page is only downloaded when the
 // user actually navigates to it, instead of bundling all 11 pages
@@ -21,20 +24,61 @@ const Contact = lazy(() => import('./pages/Contact/Contact.jsx'))
 const NotFound = lazy(() => import('./pages/NotFound/NotFound.jsx'))
 
 
+
 function RouteFallback() {
   return null
 }
 
 export default function App() {
+  //_______________________________________
+  const [locationAllowed, setLocationAllowed] = useState(null); // null = checking, true = allowed, false = denied
+  const [backendReady, setBackendReady] = useState(false);
 
-  useEffect(() => {                             // Wake up the backend server earlier
-    wakeUpServer()                              // automatically called when the app is loaded
-    .catch((err) => {
-      console.log("Backend wake-up failed:", err);
-    });
-  }, []);
+  useEffect(() => {
+    const initialize = async () => {
+      try {
+        await wakeUpServer();
+        console.log("Backend Ready");
+        setBackendReady(true);                    // Backend is awake
 
+        const locationData = await getLocationData();
+        setLocationAllowed(true);
+        saveLocation(locationData)         // Save in background
+          .then(() => {
+            console.log("Location Saved");
+          })
+          .catch((err) => {
+            console.log("Error saving location:", err);
+          });
+      } catch (err) {
+        console.log("FULL ERROR:", err);
+         if (err.code === 1) {
+          setLocationAllowed(false);
+        }
+      }
+    };
+    initialize();
+  }, []);                                     
 
+if (backendReady && locationAllowed === false) {
+  return (
+    <div className='box'    >
+      <div className='spinner'></div>
+      <h2>Location permission is required!</h2>
+      <button className="location-btn" onClick={() => window.location.reload()}>Refresh</button>
+      <style>
+        {`
+          @keyframes spin {
+            from {transform: rotate(0deg);}
+            to {transform: rotate(360deg);}
+          }
+        `}
+      </style>
+    </div>
+  );
+}
+  
+  //_______________________________________
   return (
     <Suspense fallback={<RouteFallback />}>
       <Routes>

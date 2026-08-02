@@ -7,11 +7,20 @@ const api = axios.create({
   },
 })
 
+// =============================
+// Contact Form
 export const submitContact = async (formData) => {
   return api.post("/", formData)
 };
 
+// =============================
 // Backend Wake-up
 export const wakeUpServer = () => {
   return api.get("/health");
+};
+
+// =============================
+// Save User Location
+export const saveLocation = async (locationData) => {
+  return api.post("/location", locationData);
 };
