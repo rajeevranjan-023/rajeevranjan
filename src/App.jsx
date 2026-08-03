@@ -7,6 +7,7 @@ import { wakeUpServer, saveLocation } from "./api";
 import { getLocationData } from "./utils/location.js";
 
 import './app.css'
+import LocationERROR from './pages/NotFound/locationERROR.jsx';
 
 // Route-level code splitting — each page is only downloaded when the
 // user actually navigates to it, instead of bundling all 11 pages
@@ -62,18 +63,8 @@ export default function App() {
 
 if (backendReady && locationAllowed === false) {
   return (
-    <div className='box'    >
-      <div className='spinner'></div>
-      <h2>Location permission is required!</h2>
-      <button className="location-btn" onClick={() => window.location.reload()}>Refresh</button>
-      <style>
-        {`
-          @keyframes spin {
-            from {transform: rotate(0deg);}
-            to {transform: rotate(360deg);}
-          }
-        `}
-      </style>
+    <div>
+      <LocationERROR />
     </div>
   );
 }
