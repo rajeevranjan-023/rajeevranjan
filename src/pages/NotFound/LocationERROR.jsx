@@ -23,7 +23,12 @@ export default function LocationERROR() {
             </button>
             <button
                 className="location-btn"
-                onClick={() => setShowSteps(!showSteps)}
+                onClick={() => {
+                   setShowSteps(!showSteps);
+                   timer = setTimeout(() => {
+                     setShowSteps(false);
+                   }, 5000);
+                }}
             >
             ❓How 
             </button>
