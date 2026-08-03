@@ -1,0 +1,70 @@
+.loader{
+    min-height:100vh;
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+}
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 6px solid #e5e5e5;
+  border-top: 6px solid #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  align-content: center;
+}
+/* _________________BUTTON_____________________________ */
+.location-btn {
+  width:160px;
+  height: 50px;
+  padding: 14px 32px;
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+}
+
+.location-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px 0px 0px);
+  box-shadow: 0 12px 25px rgba(37, 100, 235, 0.765);
+}
+
+.location-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.25);
+}
+/* _______________ERROR action_____________________ */
+.errorAction{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:20px;          
+}
+/* __________________steps to allow location____________________ */
+.stepsBox{
+    margin-top:20px;
+    width:420px;
+    max-width:90%;
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,.1);
+    text-align:left;
+}
+.stepsBox h3{
+    margin-bottom:12px;
+}
+.stepsBox li{
+    margin-bottom:8px;
+}
