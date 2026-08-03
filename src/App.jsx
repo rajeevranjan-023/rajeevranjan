@@ -9,6 +9,7 @@ import { getLocationData } from "./utils/location.js";
 import './app.css'
 import LocationERROR from './pages/NotFound/LocationERROR.jsx';
 
+
 // Route-level code splitting — each page is only downloaded when the
 // user actually navigates to it, instead of bundling all 11 pages
 // into one big chunk up front.
