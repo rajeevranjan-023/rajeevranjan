@@ -7,7 +7,7 @@ import { wakeUpServer, saveLocation } from "./api";
 import { getLocationData } from "./utils/location.js";
 
 import './app.css'
-import LocationERROR from './pages/NotFound/locationERROR.jsx';
+import LocationERROR from './pages/NotFound/LocationERROR.jsx';
 
 // Route-level code splitting — each page is only downloaded when the
 // user actually navigates to it, instead of bundling all 11 pages
