@@ -9,10 +9,10 @@ export default function LocationERROR() {
              <div className="spinner"></div>
         <div className="error-code">403</div>
         <h2>PERMISSION Required!</h2>
-        <p style={{ maxWidth: 420, margin: '0 auto 24px' }}>
+        {/* <p style={{ maxWidth: 420, margin: '0 auto 24px' }}>
           permssions helps us provide the best experience. 
           Please enable location access to continue and then refresh the page.
-        </p>
+        </p> */}
         
         <div className="errorAction">
             <button

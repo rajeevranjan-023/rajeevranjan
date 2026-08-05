@@ -3,11 +3,13 @@ import Layout from './components/Layout/Layout.jsx'
 
 import { lazy, Suspense, useEffect, useState } from "react";
 
-import { wakeUpServer, saveLocation } from "./api";
+import { wakeUpServer, saveLocation, saveUser } from "./api";
 import { getLocationData } from "./utils/location.js";
 
 import './app.css'
 import LocationERROR from './pages/NotFound/LocationERROR.jsx';
+
+import { getBrowserId } from "./utils/userId";
 
 
 // Route-level code splitting — each page is only downloaded when the
@@ -37,8 +39,14 @@ export default function App() {
   const [backendReady, setBackendReady] = useState(false);
 
   useEffect(() => {
+
+    
+
     const initialize = async () => {
       try {
+      const browserID = getBrowserId();
+      await saveUser(browserID,); 
+
         await wakeUpServer();
         console.log("Backend Ready");
         setBackendReady(true);                    // Backend is awake
@@ -70,6 +78,7 @@ if (backendReady && locationAllowed === false) {
   );
 }
   
+
   //_______________________________________
   return (
     <Suspense fallback={<RouteFallback />}>

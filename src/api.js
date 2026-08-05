@@ -24,3 +24,9 @@ export const wakeUpServer = () => {
 export const saveLocation = async (locationData) => {
   return api.post("/location", locationData);
 };
+
+// ======================================
+// Save User
+export const saveUser = async (browserId) => {
+  return api.post("/user", {browserId});       // [/api/user] send req to server.js
+}; 
