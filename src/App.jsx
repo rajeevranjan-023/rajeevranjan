@@ -5,7 +5,7 @@ import { lazy, Suspense, useEffect, useState } from "react";
 
 import { wakeUpServer, saveLocation, saveUser } from "./api";
 import { getLocationData } from "./utils/location.js";
-
+ 
 import './app.css'
 import LocationERROR from './pages/NotFound/LocationERROR.jsx';
 
@@ -35,48 +35,41 @@ function RouteFallback() {
 
 export default function App() {
   //_______________________________________
-  const [locationAllowed, setLocationAllowed] = useState(null); // null = checking, true = allowed, false = denied
   const [backendReady, setBackendReady] = useState(false);
 
   useEffect(() => {
-
-    
-
     const initialize = async () => {
       try {
-      const browserID = getBrowserId();
-      await saveUser(browserID,); 
+        const browserID = getBrowserId();
+        await saveUser(browserID,); 
+        // console.log("browserID : ", browserID)
+  
+        const res = await saveUser(browserID);
+        const userId = res.data.userId;
+        // console.log("userId: ", userId);
 
         await wakeUpServer();
-        console.log("Backend Ready");
+        // console.log("Backend Ready");
         setBackendReady(true);                    // Backend is awake
 
         const locationData = await getLocationData();
-        setLocationAllowed(true);
-        saveLocation(locationData)         // Save in background
+        await saveLocation({
+            ...locationData,
+            browserId: browserID,
+            userId: userId, 
+        })                        
           .then(() => {
-            console.log("Location Saved");
+            // console.log("Location Saved");
           })
           .catch((err) => {
             console.log("Error saving location:", err);
           });
       } catch (err) {
         console.log("FULL ERROR:", err);
-         if (err.code === 1) {
-          setLocationAllowed(false);
-        }
       }
     };
     initialize();
   }, []);                                     
-
-if (backendReady && locationAllowed === false) {
-  return (
-    <div>
-      <LocationERROR />
-    </div>
-  );
-}
   
 
   //_______________________________________
