@@ -23,7 +23,7 @@ const Gallery = lazy(() => import('./pages/Gallery/Gallery.jsx'))
 const Blog = lazy(() => import('./pages/Blog/Blog.jsx'))
 const Contact = lazy(() => import('./pages/Contact/Contact.jsx'))
 const NotFound = lazy(() => import('./pages/NotFound/NotFound.jsx'))
-const PdfPage = lazy(() => import('./pages/pdf_viewer/pdf.jsx'))
+const PdfPage = lazy(() => import('./pages/pdf_Viewer/pdf.jsx'))
 
 
 
