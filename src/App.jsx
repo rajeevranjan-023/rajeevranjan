@@ -12,9 +12,6 @@ import LocationERROR from './pages/NotFound/LocationERROR.jsx';
 import { getBrowserId } from "./utils/userId";
 
 
-// Route-level code splitting — each page is only downloaded when the
-// user actually navigates to it, instead of bundling all 11 pages
-// into one big chunk up front.
 const Home = lazy(() => import('./pages/Home/Home.jsx'))
 const About = lazy(() => import('./pages/About/About.jsx'))
 const Skills = lazy(() => import('./pages/Skills/Skills.jsx'))
@@ -26,6 +23,7 @@ const Gallery = lazy(() => import('./pages/Gallery/Gallery.jsx'))
 const Blog = lazy(() => import('./pages/Blog/Blog.jsx'))
 const Contact = lazy(() => import('./pages/Contact/Contact.jsx'))
 const NotFound = lazy(() => import('./pages/NotFound/NotFound.jsx'))
+const PdfPage = lazy(() => import('./pages/pdf_viewer/pdf.jsx'))
 
 
 
@@ -88,6 +86,8 @@ export default function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/:section/pdf" element={<PdfPage />} />
+          
         </Route>
       </Routes>
     </Suspense>

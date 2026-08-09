@@ -1,0 +1,59 @@
+.control-group {
+  display: flex;
+  align-items: center;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.control-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  width: 32px;
+  height: 32px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.control-btn:hover:not(:disabled) {
+  background: var(--surface-raised);
+  color: var(--accent);
+}
+
+.control-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.control-readout {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text);
+  padding: 0 0.6rem;
+  min-width: 4.5em;
+  text-align: center;
+  border-left: 1px solid var(--border-soft);
+  border-right: 1px solid var(--border-soft);
+  letter-spacing: 0.02em;
+}
+
+.control-readout-sep {
+  color: var(--text-faint);
+  margin: 0 0.15em;
+}
+
+.control-readout-btn {
+  background: transparent;
+  border-top: none;
+  border-bottom: none;
+  cursor: pointer;
+  min-width: 3.5em;
+}
+
+.control-readout-btn:hover {
+  color: var(--accent);
+}
