@@ -1,7 +1,11 @@
 import useDocumentTitle from '../../hooks/useDocumentTitle.js'
+import { useNavigate } from "react-router-dom";
+
+
 
 export default function Education() {
   useDocumentTitle('Education')
+  const navigate = useNavigate();
 
   return (
     <>
@@ -34,6 +38,26 @@ export default function Education() {
             <div className="org"><a href='https://www.cambridgepublicschool.co.in/'>Cambridge Public School (CBSE)</a></div>
             <p style={{ margin: 0 }}>Completed secondary education.</p>
             <span className="timeline-badge">94.0%</span>
+
+
+
+<button
+  onClick={() =>
+    navigate("/education/pdf", {
+      state: {
+        pdfUrl: "https://mozilla.github.io/pdf.js/web/compressed.tracemonkey-pldi-09.pdf",
+        title: "Project Report",
+      },
+    })
+  }
+>
+  Open PDF
+</button>       
+
+
+
+
+
           </div>
         </div>
       </div>

@@ -1,0 +1,159 @@
+.pdf-stage {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  overflow: auto;
+  padding: 2rem 1rem;
+}
+
+/* The 3D "book" scene. perspective gives the rotateY() below real depth
+   instead of a flat squash. */
+.pdf-scene {
+  margin: auto;
+  position: relative;
+  display: inline-block;
+  perspective: 2400px;
+}
+
+.pdf-scene-hidden {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.page-slot {
+  border-radius: 3px;
+}
+
+/* The real, current page. Always present underneath — the flip layer
+   simply rotates away to reveal it, so there's never a blank gap. */
+.page-slot-base {
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.pdf-page {
+  box-shadow: 0 0 0 1px var(--border-soft), 0 20px 60px -15px rgba(0, 0, 0, 0.65);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.pdf-page canvas {
+  display: block;
+  border-radius: 3px;
+}
+
+/* The outgoing page, mid-turn. Positioned exactly over the base page and
+   rotated around its bound edge, like a leaf lifting off a book. */
+.page-slot-flip {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition: transform 620ms cubic-bezier(0.4, 0.05, 0.2, 1);
+  will-change: transform;
+  z-index: 5;
+}
+
+.page-slot-flip .pdf-page-flip {
+  box-shadow: 0 0 0 1px var(--border-soft), 0 30px 70px -12px rgba(0, 0, 0, 0.75);
+}
+
+.page-slot-flip.flip-next {
+  transform-origin: left center;
+  transform: rotateY(0deg);
+  transition-duration: 620ms;
+}
+.page-slot-flip.flip-next.flip-active {
+  transform: rotateY(-178deg);
+}
+
+.page-slot-flip.flip-prev {
+  transform-origin: right center;
+  transform: rotateY(0deg);
+  transition-duration: 620ms;
+}
+.page-slot-flip.flip-prev.flip-active {
+  transform: rotateY(178deg);
+}
+
+/* A soft shadow that sweeps across the turning leaf as it catches the
+   light edge-on, peaking as it passes perpendicular to the viewer. */
+.flip-shade {
+  position: absolute;
+  inset: 0;
+  border-radius: 3px;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 55%);
+}
+.flip-next .flip-shade {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0) 55%);
+}
+.flip-prev .flip-shade {
+  background: linear-gradient(270deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0) 55%);
+}
+.flip-active .flip-shade {
+  animation: flip-shade-sweep 620ms ease forwards;
+}
+
+@keyframes flip-shade-sweep {
+  0% {
+    opacity: 0;
+  }
+  45% {
+    opacity: 0.85;
+  }
+  60% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* A thin bright seam along the turning edge, like light catching the
+   paper's fold as it lifts. */
+.flip-edge {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 10px;
+  pointer-events: none;
+  opacity: 0;
+}
+.flip-next .flip-edge {
+  left: 0;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0));
+}
+.flip-prev .flip-edge {
+  right: 0;
+  background: linear-gradient(270deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0));
+}
+.flip-active .flip-edge {
+  animation: flip-edge-glow 620ms ease forwards;
+}
+
+@keyframes flip-edge-glow {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-slot-flip {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .pdf-stage {
+    padding: 1.25rem 0.5rem;
+  }
+}
