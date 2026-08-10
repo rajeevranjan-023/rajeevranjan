@@ -37,7 +37,7 @@ export default function App() {
 
   useEffect(() => {
     const initialize = async () => {
-      try {
+      try { 
         const browserID = getBrowserId();
         await saveUser(browserID,); 
         // console.log("browserID : ", browserID)
