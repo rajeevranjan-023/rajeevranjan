@@ -1,11 +1,36 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import useDocumentTitle from '../../hooks/useDocumentTitle.js'
 import { submitContact } from '../../api.js'
+import{ getBrowserId } from "../../utils/userId.js"
+import { saveUser } from "../../api.js";
 
 export default function Contact() {
   useDocumentTitle('Contact')
 
-  const [form, setForm] = useState({ name: '', email: '', message: '' })
+  //===========================================
+  useEffect(() => {
+    const initialize = async () => {
+      try {
+      const browserId = getBrowserId();
+      const res = await saveUser(browserId);
+      const userId = res.data.userId;
+      // console.log(browserId, userId);
+
+        setForm((prev) => ({
+          ...prev,
+          browserId: browserId,
+          userId: userId
+        }));
+  
+      } catch (err) {
+        console.log("ERROR:", err);
+      }
+    };
+    initialize();
+  }, []);
+  //===========================================
+
+  const [form, setForm] = useState({ browserId:'', userId:'', name: '', email: '', message: '' })
   let handleInput = (event)=>{
     setForm((currData)=>{
       return{...currData, [event.target.name]: event.target.value}
@@ -14,16 +39,16 @@ export default function Contact() {
 
   let handleSubmit = async(event)=>{
     event.preventDefault();
-    console.log("Submit Clicked");
-    console.log(form);
-    console.log("1");
+    // console.log("Submit Clicked");
+    // console.log(form);
+    // console.log("1");
     const res = await submitContact(form);
-    console.log("2");
-    console.log(res);
+    // console.log("2");
+    // console.log(res);
     // await submitContact(form);
     setForm({ name: '', email: '', message: '' });
-  }
-
+  };
+  //=========================================================
   
 
   return (

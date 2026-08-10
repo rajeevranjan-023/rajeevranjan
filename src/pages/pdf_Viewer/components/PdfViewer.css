@@ -1,149 +1,75 @@
 .pdf-stage {
+  position: relative;
   flex: 1;
-  min-width: 0;
+  width: 100%;
   display: flex;
   overflow: auto;
   padding: 2rem 1rem;
+  justify-content: center;
+  /* Allow native vertical scrolling, but hand horizontal drag + pinch
+     over to our own gesture handling instead of the browser's. */
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
 }
 
-/* The 3D "book" scene. perspective gives the rotateY() below real depth
-   instead of a flat squash. */
 .pdf-scene {
-  margin: auto;
-  position: relative;
-  display: inline-block;
-  perspective: 2400px;
+  width: 100%;
 }
 
 .pdf-scene-hidden {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
+  visibility: hidden;
 }
 
 .page-slot {
-  border-radius: 3px;
+  display: flex;
+  justify-content: center;
 }
 
-/* The real, current page. Always present underneath — the flip layer
-   simply rotates away to reveal it, so there's never a blank gap. */
 .page-slot-base {
-  position: relative;
-  transform-style: preserve-3d;
-}
-
-.pdf-page {
-  box-shadow: 0 0 0 1px var(--border-soft), 0 20px 60px -15px rgba(0, 0, 0, 0.65);
-  border-radius: 3px;
-  overflow: hidden;
-}
-
-.pdf-page canvas {
-  display: block;
-  border-radius: 3px;
-}
-
-/* The outgoing page, mid-turn. Positioned exactly over the base page and
-   rotated around its bound edge, like a leaf lifting off a book. */
-.page-slot-flip {
-  position: absolute;
-  inset: 0;
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-  transition: transform 620ms cubic-bezier(0.4, 0.05, 0.2, 1);
+  transform-origin: 50% 50%;
   will-change: transform;
+}
+
+/* While actively pinching we're driving `transform: scale()` on every
+   touchmove for an immediate, 1:1 response -- a transition here would
+   fight the live updates and feel laggy, so it stays off mid-gesture. */
+.page-slot-pinching {
+  transition: none;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Let the rendered page grow/shrink with `scale` instead of being
+   capped at the container's width -- that cap was the reason zoom %
+   changed while the page visually stayed the same size. .pdf-stage
+   already has overflow: auto, so a zoomed-in page just scrolls, same
+   as any native PDF viewer. */
+.react-pdf__Page {
+  width: fit-content !important;
+  height: fit-content !important;
+}
+
+.react-pdf__Page canvas {
+  display: block;
+}
+
+.pinch-zoom-badge {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(20, 20, 24, 0.72);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  pointer-events: none;
   z-index: 5;
-}
-
-.page-slot-flip .pdf-page-flip {
-  box-shadow: 0 0 0 1px var(--border-soft), 0 30px 70px -12px rgba(0, 0, 0, 0.75);
-}
-
-.page-slot-flip.flip-next {
-  transform-origin: left center;
-  transform: rotateY(0deg);
-  transition-duration: 620ms;
-}
-.page-slot-flip.flip-next.flip-active {
-  transform: rotateY(-178deg);
-}
-
-.page-slot-flip.flip-prev {
-  transform-origin: right center;
-  transform: rotateY(0deg);
-  transition-duration: 620ms;
-}
-.page-slot-flip.flip-prev.flip-active {
-  transform: rotateY(178deg);
-}
-
-/* A soft shadow that sweeps across the turning leaf as it catches the
-   light edge-on, peaking as it passes perpendicular to the viewer. */
-.flip-shade {
-  position: absolute;
-  inset: 0;
-  border-radius: 3px;
-  pointer-events: none;
-  opacity: 0;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 55%);
-}
-.flip-next .flip-shade {
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0) 55%);
-}
-.flip-prev .flip-shade {
-  background: linear-gradient(270deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0) 55%);
-}
-.flip-active .flip-shade {
-  animation: flip-shade-sweep 620ms ease forwards;
-}
-
-@keyframes flip-shade-sweep {
-  0% {
-    opacity: 0;
-  }
-  45% {
-    opacity: 0.85;
-  }
-  60% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-/* A thin bright seam along the turning edge, like light catching the
-   paper's fold as it lifts. */
-.flip-edge {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 10px;
-  pointer-events: none;
-  opacity: 0;
-}
-.flip-next .flip-edge {
-  left: 0;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0));
-}
-.flip-prev .flip-edge {
-  right: 0;
-  background: linear-gradient(270deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0));
-}
-.flip-active .flip-edge {
-  animation: flip-edge-glow 620ms ease forwards;
-}
-
-@keyframes flip-edge-glow {
-  0% {
-    opacity: 0;
-  }
-  40% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
+  backdrop-filter: blur(4px);
 }
 
 @media (prefers-reduced-motion: reduce) {

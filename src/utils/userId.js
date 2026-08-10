@@ -10,8 +10,8 @@ export const getBrowserId = () => {
 
     Cookies.set("browserId", browserId, {
       expires: 365,
-      sameSite: "Lax",
-      path: "/",
+      sameSite: "Lax", 
+      path: "/", 
     });
   }
 
