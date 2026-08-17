@@ -1,7 +1,10 @@
 import useDocumentTitle from '../../hooks/useDocumentTitle.js'
+import { useNavigate } from "react-router-dom";
+
 
 export default function Projects() {
   useDocumentTitle('Projects')
+  const navigate = useNavigate();
 
   return (
     <>
@@ -9,10 +12,10 @@ export default function Projects() {
       <h1 className="reveal">Projects</h1>
 
       <div className="grid-2 reveal" style={{ marginTop: 20 }}>
-        <div className="panel project-card">
+        <div  onClick={() => navigate("/projects/water-tank")} className="panel project-card">
           <span className="project-tag">Electromechanical Systems · May – Jul 2025</span>
           <h3>Smart Water Level Monitoring &amp; Control System</h3>
-          <p>
+          <p> 
             Designed an electromechanical closed-loop control system for automated water level
             regulation, using sensor-based feedback for real-time monitoring and correction.
           </p>
@@ -28,7 +31,7 @@ export default function Projects() {
           </div>
         </div>
 
-        <div className="panel project-card">
+        <div onClick={() => navigate("/projects/gps-tracker")} className="panel project-card">
           <span className="project-tag">Web App · January 2026</span>
           <h3>Weather Application (REST API)</h3>
           <p>

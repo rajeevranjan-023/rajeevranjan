@@ -6,7 +6,7 @@ export default function Experience() {
 
   return (
     <>
-      <div className="eyebrow reveal">Service Record</div>
+      {/* <div className="eyebrow reveal">Service Record</div>
       <h1 className="reveal">Experience</h1>
       
 
@@ -38,7 +38,7 @@ export default function Experience() {
         <Link to="/contact" className="btn btn-ghost">
           <i className="fa-solid fa-paper-plane"></i> Let's Connect
         </Link>
-      </div>
+      </div> */}
     </>
   )
 }

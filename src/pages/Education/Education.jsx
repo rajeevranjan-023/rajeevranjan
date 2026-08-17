@@ -1,5 +1,6 @@
 import useDocumentTitle from '../../hooks/useDocumentTitle.js'
 import { useNavigate } from "react-router-dom";
+import SlideViewer from '../pdf_Viewer/SlideViewer.jsx';
 
 
 
@@ -38,25 +39,18 @@ export default function Education() {
             <div className="org"><a href='https://www.cambridgepublicschool.co.in/'>Cambridge Public School (CBSE)</a></div>
             <p style={{ margin: 0 }}>Completed secondary education.</p>
             <span className="timeline-badge">94.0%</span>
+            import SlideViewer from "../components/SlideViewer";
 
 
-
-<button
-  onClick={() =>
-    navigate("/education/pdf", {
-      state: {
-        pdfUrl: "https://mozilla.github.io/pdf.js/web/compressed.tracemonkey-pldi-09.pdf",
-        title: "Project Report",
-      },
-    })
-  }
->
-  Open PDF
-</button>       
-
-
-
-
+      <SlideViewer
+      title="Education Presentation"
+  slides={[
+    "/slides/Slide1.PNG",
+    "/slides/Slide2.PNG",
+    "/slides/Slide3.PNG",
+    "/slides/Slide4.PNG",
+  ]}
+/>
 
           </div>
         </div>
@@ -64,3 +58,4 @@ export default function Education() {
     </>
   )
 }
+

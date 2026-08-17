@@ -1,12 +1,4 @@
-/* =====================================
-   OPTIMIZED BLOCKS
-   Replace these sections only.
-===================================== */
 
-/* ---- Timeline Dot ----
-   Note:
-   Slightly reduced glow for better performance.
-*/
 .timeline-dot{
   position:absolute;
   left:-34px;
@@ -20,8 +12,6 @@
 }
 
 /* ---- Skill Card ----
-   Note:
-   Replaced transition:all with specific properties.
 */
 .skill-chip{
   position:relative;
@@ -46,8 +36,6 @@
 }
 
 /* ---- Skill Icon ----
-   Note:
-   Animate only required properties.
 */
 .skill-chip i{
   font-size:26px;
@@ -59,7 +47,6 @@
 }
 
 /* ---- Skill Hover ----
-   Slightly lighter transform and shadow.
 */
 .skill-chip:hover{
   transform:translateY(-6px) scale(1.04);
@@ -68,8 +55,6 @@
 }
 
 /* ---- Skill Icon Hover ----
-   Note:
-   Reduced glow with nearly identical appearance.
 */
 .skill-chip:hover i{
   color:var(--accent-2);
@@ -78,8 +63,6 @@
 }
 
 /* ---- Skill Tooltip ----
-   Note:
-   Replace transition:all with GPU-friendly properties.
 */
 .skill-tooltip{
   position:absolute;
@@ -112,8 +95,6 @@
 }
 
 /* ---- Empty State Icon ----
-   Note:
-   Slower floating animation for smoother rendering.
 */
 .empty-state .icon-orb{
   width:64px;

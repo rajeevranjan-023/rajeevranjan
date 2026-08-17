@@ -8,7 +8,7 @@ function Background() {
       <span className="orb orb-b"></span>
       <span className="orb orb-c"></span>
     </>
-  )
+  ) 
 }
 
 export default memo(Background)
