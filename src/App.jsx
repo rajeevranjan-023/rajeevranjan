@@ -23,7 +23,8 @@ const Gallery = lazy(() => import('./pages/Gallery/Gallery.jsx'))
 const Blog = lazy(() => import('./pages/Blog/Blog.jsx'))
 const Contact = lazy(() => import('./pages/Contact/Contact.jsx'))
 const NotFound = lazy(() => import('./pages/NotFound/NotFound.jsx'))
-const PdfPage = lazy(() => import('./pages/pdf_Viewer/pdf.jsx'))
+const Imagepage = lazy(() => import('./pages/pdf_Viewer/SlideViewer.jsx'))
+const ProjectDetail = lazy(()=>import('./pages/Projects/project_detail/ProjectDetails.jsx'))
 
 
 
@@ -86,7 +87,9 @@ export default function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
-          <Route path="/:section/pdf" element={<PdfPage />} />
+          <Route path="/:section/pdf" element={<Imagepage />} />
+          <Route path="/projects/:projectId" element={<ProjectDetail />} />
+
           
         </Route>
       </Routes>

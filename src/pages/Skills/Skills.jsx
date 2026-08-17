@@ -200,7 +200,7 @@ const electronics = useMemo(
         <div className="skill-grid">
           {tools.map((s) => (
             <SkillChip key={s.name} {...s} />
-          ))}
+          ))} 
         </div>
       </div>
 

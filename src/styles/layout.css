@@ -1,9 +1,3 @@
-/* =====================================
-   LAYOUT
-   The page skeleton: app shell, main
-   column, content wrapper, and reusable
-   grid utility classes.
-===================================== */
 
 .app-shell{
   display: flex;
