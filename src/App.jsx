@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout/Layout.jsx'
+import ScrollToTop from './components/Ui/ScrollToTop.jsx'
 
 import { lazy, Suspense, useEffect, useState } from "react";
 
@@ -23,8 +24,12 @@ const Gallery = lazy(() => import('./pages/Gallery/Gallery.jsx'))
 const Blog = lazy(() => import('./pages/Blog/Blog.jsx'))
 const Contact = lazy(() => import('./pages/Contact/Contact.jsx'))
 const NotFound = lazy(() => import('./pages/NotFound/NotFound.jsx'))
-const Imagepage = lazy(() => import('./pages/pdf_Viewer/SlideViewer.jsx'))
+
+
 const ProjectDetail = lazy(()=>import('./pages/Projects/project_detail/ProjectDetails.jsx'))
+const PdfViwer = lazy(() => import('./pages/Projects/pdf_Viewer/SlideViewer.jsx'))
+const GithubViewer = lazy(()=>import('./pages/Projects/github_viewer/GitHubViewer.jsx'))
+const ProjectInsights = lazy(()=>import('./pages/Projects/github_viewer/ProjectInsights.jsx'))
 
 
 
@@ -33,6 +38,7 @@ function RouteFallback() {
 }
 
 export default function App() {
+  
   //_______________________________________
   const [backendReady, setBackendReady] = useState(false);
 
@@ -74,10 +80,11 @@ export default function App() {
   //_______________________________________
   return (
     <Suspense fallback={<RouteFallback />}>
+      <ScrollToTop/>
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/about" element={<About />} /> 
           <Route path="/skills" element={<Skills />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/experience" element={<Experience />} />
@@ -87,8 +94,15 @@ export default function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
-          <Route path="/:section/pdf" element={<Imagepage />} />
+
+
           <Route path="/projects/:projectId" element={<ProjectDetail />} />
+          <Route path="/:projects/:projectId/pdf" element={<PdfViwer/>} />
+          <Route path="/:projects/:projectId/github" element={<GithubViewer />} />
+          <Route path="/projects/:projectId/github/insights" element={<ProjectInsights />} />
+          
+          
+          
 
           
         </Route>

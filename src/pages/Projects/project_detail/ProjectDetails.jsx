@@ -5,43 +5,38 @@ import "./ProjectDetails.css";
 //________________________________________________________________________________
 // ===============================================================================
 const projects = {
-  "water-tank": {
+  "a7f3k9x2qz": {                               // water tank project
     title: "Water Tank Management System",
 
     description:
       "An automated IoT-based water tank monitoring and management system using ESP32, sensors, backend services and AI-based prediction.",
 
     technologies: [
+      "version v2 online comapatible:-",
       "ESP32",
       "IoT",
       "Node.js",
       "MongoDB",
-      "Python",
-      "AI/ML",
+      "c++",
     ],
 
     resources: [
       {
         icon: "📄",
-        title: "Project Report",
-        description: "Complete project documentation",
+        title: "Project specification",
+        description: "Complete project detailed, woking etc",
         type: "pdf",
-        pdfUrl: "/WaterMotorStarter.pdf",
-      },
-      
-      {
-        icon: "🔬",
-        title: "Research",
-        description: "Research, methodology and references",
-        type: "page",
-        path: "research",
+        pdfUrl: "/waterMotor/machanism.pdf",
+        date: "dec 2025"
       },
       {
         icon: "💻",
-        title: "Source Code",
-        description: "View the complete source code",
-        type: "external",
-        url: "https://github.com/yourusername/water-tank",
+        title: "Source Code v2 model",
+        description: "View the complete source code for online compactible system",
+        type: "github",
+        owner:"rajeevranjan-023",
+        repo: "rajeevranjan",
+        date: " repository is NOT uptodate, Waiting for lastest commit",
       },
       {
         icon: "🖼️",
@@ -49,6 +44,27 @@ const projects = {
         description: "Screenshots and project images",
         type: "page",
         path: "gallery",
+      },
+      {
+        icon: "🔬",
+        title: "Development & Testing",
+        description: "Development Process & Testing Experimental Design & Analysis",
+        type: "pdf",
+        pdfUrl: "/waterMotor/circuit.pdf",
+      },
+      {
+        icon: "🕒",
+        title: "Timeline 1st part",
+        description: "Development of status & control pannel {upper part}",
+        type: "pdf",
+        pdfUrl: "/waterMotor/upper part.pdf",
+      },
+      {
+        icon: "🕒",
+        title: "Timeline 2st part",
+        description: "Development of power & execution pannel {lower part}",
+        type: "pdf",
+        pdfUrl: "/waterMotor/lower part.pdf",
       },
       {
         icon: "🎥",
@@ -206,10 +222,8 @@ export default function ProjectDetail() {
         <button
           className="back-btn"
           onClick={() => navigate("/projects")}
-        >
-          ← Back to Projects
+        >← Back to Projects
         </button>
-
         <h1>Project Not Found</h1>
         <p>The requested project does not exist.</p>
       </main>
@@ -218,17 +232,7 @@ export default function ProjectDetail() {
 
   const handleResource = (resource) => {
     if (resource.type === "pdf") {            //pdf viewer
-      navigate("/projects/pdf", {
-        state: {
-          pdfUrl: resource.pdfUrl,
-          title: resource.title,
-        },
-      });
-      return;
-    }
-
-    if (resource.type === "pdf") {
-      navigate("/projects/pdf", {
+      navigate(`/projects/${projectId}/pdf`, {
         state: {
           pdfUrl: resource.pdfUrl,
           title: resource.title,
@@ -245,7 +249,16 @@ export default function ProjectDetail() {
     if (resource.type === "external") {      // External link
       window.open(resource.url, "_blank");
     }
-  };
+
+    if (resource.type === "github") {      // github link
+     navigate(`/projects/${projectId}/github`, {
+      state: {
+        OWNER: resource.owner,
+        REPO: resource.repo,
+      },
+    });
+
+  };}
   //_____________________________________________________________
   return (
     <main className="project-details">
@@ -298,6 +311,7 @@ export default function ProjectDetail() {
               <div className="resource-info">
                 <h3>{resource.title}</h3>
                 <p>{resource.description}</p>
+                <h6>{resource.date}</h6>
               </div>
 
               <span className="resource-arrow">→</span>
