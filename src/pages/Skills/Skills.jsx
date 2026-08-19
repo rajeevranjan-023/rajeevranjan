@@ -58,12 +58,32 @@ const fullStack = useMemo(
       link: 'https://developer.mozilla.org/en-US/docs/Web/CSS',
     },
     {
+      icon: 'fa-square-js',
+      name: 'JavaScript',
+      link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
+    },
+    {
+      icon: 'fa-react',
+      name: 'React.js',
+      link: 'https://react.dev/',
+    },
+    {
+      icon: 'fa-bootstrap',
+      name: 'Bootstrap',
+      link: 'https://getbootstrap.com/',
+    },
+    {
+      icon: 'fa-wind',
+      name: 'Tailwind CSS',
+      link: 'https://tailwindcss.com/docs',
+    },
+    {
       icon: 'fa-node',
       name: 'Node.js',
       link: 'https://nodejs.org/docs/latest/api/',
     },
     {
-      icon: 'fa-square-js',
+      icon: 'fa-server',
       name: 'Express.js',
       link: 'https://expressjs.com/',
     },
@@ -97,9 +117,15 @@ const fullStack = useMemo(
       brand: false,
       link: 'https://restfulapi.net/',
     },
+    {
+      icon: 'fa-layer-group',
+      name: 'MERN Stack',
+      brand: false,
+      link: 'https://www.mongodb.com/mern-stack',
+    },
   ],
-  [],
-)
+  []
+);
 
 const tools = useMemo(
   () => [
@@ -108,6 +134,12 @@ const tools = useMemo(
       name: 'VS Code',
       brand: false,
       link: 'https://code.visualstudio.com/docs',
+    },
+    {
+      icon: 'fa-android',
+      name: 'Android Studio',
+      brand: false,
+      link: 'https://developer.android.com/studio',
     },
     {
       icon: 'fa-git-alt',
@@ -119,9 +151,51 @@ const tools = useMemo(
       name: 'GitHub',
       link: 'https://github.com/',
     },
+    {
+      icon: 'fa-paper-plane',
+      name: 'Postman',
+      brand: false,
+      link: 'https://learning.postman.com/docs/',
+    },
+    {
+      icon: 'fa-database',
+      name: 'MongoDB Compass',
+      brand: false,
+      link: 'https://www.mongodb.com/products/compass',
+    },
+    {
+      icon: 'fa-cloud',
+      name: 'MongoDB Atlas',
+      brand: false,
+      link: 'https://www.mongodb.com/atlas/database',
+    },
+    {
+      icon: 'fa-database',
+      name: 'MySQL Workbench',
+      brand: false,
+      link: 'https://dev.mysql.com/doc/workbench/en/',
+    },
+    {
+      icon: 'fa-cloud-arrow-up',
+      name: 'Vercel',
+      brand: false,
+      link: 'https://vercel.com/docs',
+    },
+    {
+      icon: 'fa-cloud',
+      name: 'Netlify',
+      brand: false,
+      link: 'https://docs.netlify.com/',
+    },
+    {
+      icon: 'fa-server',
+      name: 'Render',
+      brand: false,
+      link: 'https://render.com/docs',
+    },
   ],
-  [],
-)
+  []
+);
 
 const electronics = useMemo(
   () => [

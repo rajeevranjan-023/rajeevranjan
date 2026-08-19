@@ -28,19 +28,6 @@ const projects = {
         type: "pdf",
         pdfUrl: "/WaterMotorStarter.pdf",
       },
-
-      {
-        icon: "📄",
-        title: "Project Report",
-        description: "Complete project documentation",
-        type: "slides",
-        slides: [
-          "/slides/Slide1.PNG",
-          "/slides/Slide2.PNG",
-          "/slides/Slide3.PNG",
-          "/slides/Slide4.PNG",
-        ],
-      },
       
       {
         icon: "🔬",

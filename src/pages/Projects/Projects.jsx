@@ -31,7 +31,7 @@ export default function Projects() {
           </div>
         </div>
 
-        <div onClick={() => navigate("/projects/gps-tracker")} className="panel project-card">
+        <div onClick={() => navigate("/projects/gps-trac")} className="panel project-card">
           <span className="project-tag">Web App · January 2026</span>
           <h3>Weather Application (REST API)</h3>
           <p>
