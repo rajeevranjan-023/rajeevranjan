@@ -69,11 +69,7 @@ export default function Home() {
       </div>
 
       <div className="grid-4">
-        <Link to="/about" className="panel quick-card reveal">
-          <i className="fa-solid fa-user-astronaut"></i>
-          <h3>About</h3>
-          <p>Objective, background &amp; how I work.</p>
-        </Link>
+
         <Link to="/skills" className="panel quick-card reveal">
           <i className="fa-solid fa-microchip"></i>
           <h3>Skills</h3>
@@ -88,6 +84,12 @@ export default function Home() {
           <i className="fa-solid fa-graduation-cap"></i>
           <h3>Education</h3>
           <p>Academic timeline from Class X onward.</p>
+        </Link>
+
+        <Link to="/contact" className="panel quick-card reveal">
+          <i className="fa-solid fa-user-astronaut"></i>
+          <h3 >contact</h3>
+          <p>Let’s connect, Reach out to me</p>
         </Link>
       </div>
 {/*______________________________________________________________________________________ */}
