@@ -12,7 +12,7 @@ export default function Projects() {
       <h1 className="reveal">Projects</h1>
 
       <div className="grid-2 reveal" style={{ marginTop: 20 }}>
-        <div  onClick={() => navigate("/projects/water-tank")} className="panel project-card">
+        <div  onClick={() => navigate("/projects/a7f3k9x2qz")} className="panel project-card">
           <span className="project-tag">Electromechanical Systems · May – Jul 2025</span>
           <h3>Smart Water Level Monitoring &amp; Control System</h3>
           <p> 

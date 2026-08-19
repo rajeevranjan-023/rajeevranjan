@@ -1,6 +1,6 @@
 import useDocumentTitle from '../../hooks/useDocumentTitle.js'
 import { useNavigate } from "react-router-dom";
-import SlideViewer from '../pdf_Viewer/SlideViewer.jsx';
+import SlideViewer from '../Projects/pdf_Viewer/SlideViewer.jsx';
 
 
 
