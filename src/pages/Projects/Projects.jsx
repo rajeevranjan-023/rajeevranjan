@@ -19,30 +19,25 @@ export default function Projects() {
             Designed an electromechanical closed-loop control system for automated water level
             regulation, using sensor-based feedback for real-time monitoring and correction.
           </p>
-          <ul className="project-list">
-            <li>Achieved 100% automation in maintaining predefined water levels</li>
-            <li>Sensor-driven feedback loop removes the need for manual checks</li>
-            <li>Optimized the system afterwards to improve overall water-management efficiency</li>
-          </ul>
+
           <div className="project-meta">
             <span className="tech-pill">Sensors</span>
             <span className="tech-pill">Closed-loop Control</span>
             <span className="tech-pill">Automation</span>
+            <span className="tech-pill">v2. C++</span>
           </div>
         </div>
 
-        <div onClick={() => navigate("/projects/gps-trac")} className="panel project-card">
+        {/* =========================================================================================== */}
+
+        <div onClick={() => navigate("/projects/b4x9m2t7qk")} className="panel project-card">
           <span className="project-tag">Web App · January 2026</span>
           <h3>Weather Application (REST API)</h3>
           <p>
             A responsive web app that pulls real-time weather data for any location a user types
             in, built entirely with vanilla front-end tools plus a public weather REST API.
           </p>
-          <ul className="project-list">
-            <li>Live weather lookup by user-entered location</li>
-            <li>Dynamic, responsive interface built with HTML, CSS &amp; JavaScript</li>
-            <li>Clean REST API integration and response handling</li>
-          </ul>
+
           <div className="project-meta">
             <span className="tech-pill">HTML</span>
             <span className="tech-pill">CSS</span>
@@ -50,6 +45,55 @@ export default function Projects() {
             <span className="tech-pill">REST API</span>
           </div>
         </div>
+        
+        {/* =========================================================================================== */}
+        <div onClick={() => navigate("/projects/c2f9a6t3wz")} className="panel project-card">
+          <span className="project-tag">PORTFOLIO SITE · JULY 2026</span>
+          <h3>Portfolio site (Rajeev Ranjan)</h3>
+          <p>
+            A full-stack portfolio platform demonstrating my work in web
+            development, system design, and practical project implementation 
+            with a focus on clean UI and performance.
+          </p>
+
+          <div className="project-meta">
+            <span className="tech-pill">HTML</span>
+            <span className="tech-pill">CSS</span>
+            <span className="tech-pill">JavaScript</span>
+            <span className="tech-pill">REST API</span>
+            <span className="tech-pill">MongoDB Atlas</span>
+            <span className="tech-pill">React.js</span>
+            <span className="tech-pill">Node.js</span>
+            <span className="tech-pill">Express.js</span>
+            <span className="tech-pill">Tailwind css</span>
+          </div>
+        </div>
+        {/* =========================================================================================== */}
+        <div onClick={() => navigate("/projects/d7n4c8v2jb")} className="panel project-card">
+          <span className="project-tag">------- · AUGUST 2026</span>
+          <h3>-------------------</h3>
+          <p>
+Project in <b>progess</b>..... soon updated here...
+          </p>
+
+          <div className="project-meta">
+            <span className="tech-pill">HTML</span>
+            <span className="tech-pill">CSS</span>
+            <span className="tech-pill">JavaScript</span>
+            <span className="tech-pill">REST API</span>
+            <span className="tech-pill">MongoDB Atlas</span>
+            <span className="tech-pill">React.js</span>
+            <span className="tech-pill">Node.js</span>
+            <span className="tech-pill">Express.js</span>
+            <span className="tech-pill">Tailwind css</span>
+            <span className="tech-pill">ESP32 module</span>
+            <span className="tech-pill">C++</span>
+            <span className="tech-pill">sensor and automations</span>
+          </div>
+        </div>
+        {/* =========================================================================================== */}
+
+
       </div>
 
       <div className="panel panel-pad reveal" style={{ marginTop: 26 }}>
