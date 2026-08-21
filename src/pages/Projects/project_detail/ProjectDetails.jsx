@@ -8,9 +8,12 @@ const projects = {
   "a7f3k9x2qz": {                               // water tank project
     title: "Water Tank Management System",
 
-    description:
+    description:[
       "An automated IoT-based water tank monitoring and management system using ESP32, sensors, backend services and AI-based prediction.",
-
+      "Achieved 100% automation in maintaining predefined water levels",
+      "Sensor-driven feedback loop removes the need for manual checks",
+      "Optimized the system afterwards to improve overall water-management efficiency"
+    ],
     technologies: [
       "version v2 online comapatible:-",
       "ESP32",
@@ -84,12 +87,15 @@ const projects = {
   },
 //________________________________________________________________________________
 // ===============================================================================
-  "gps-tracker": {
-    title: "GPS Live Tracker",
+   "b4x9m2t7qk": {                      //weather website
+    title: "weather ",
 
-    description:
+    description:[
       "A real-time GPS tracking system that displays live vehicle location using GPS hardware, backend APIs and an interactive map.",
-
+      "Live weather lookup by user-entered location",
+      "Dynamic, responsive interface built with HTML, CSS & JavaScript",
+      "Clean REST API integration and response handling"
+    ],
     technologies: [
       "ESP32",
       "NEO-6M GPS",
@@ -103,109 +109,99 @@ const projects = {
     resources: [
       {
         icon: "📄",
-        title: "Project Report",
-        description: "Complete GPS tracker documentation",
-        type: "pdf",
-        pdfUrl: "/pdf/gps-tracker-report.pdf",
-      },
-      {
-        icon: "🔬",
-        title: "Research",
-        description: "Research and methodology",
+        title: "Project specification",
+        description: "Complete project detailed, woking etc",
         type: "page",
-        path: "research",
+        path: "results",
       },
       {
         icon: "💻",
         title: "Source Code",
-        description: "View the complete source code",
+        description: "View the complete source code for frontend",
+        type: "github",
+        owner:"rajeevranjan-023",
+        repo: "rajeevranjan",
+      },
+      {
+        icon: "🌐",
+        title: "Live site",
+        description: "Explore to know more about this website",
         type: "external",
-        url: "https://github.com/yourusername/gps-tracker",
-      },
+        url: "https://www.youtube.com/",
+      }
+    ],
+  },
+
+//________________________________________________________________________________
+// ===============================================================================
+  "c2f9a6t3wz": {                               //portfolio site
+    title: "this PORTFOLIO site ", 
+
+    description:[
+      "A comprehensive full-stack portfolio that highlights my skills in web development, system architecture, and real-world project implementation, focusing on intuitive design and optimized performance.",
+    ],
+    technologies: [
+      "React",
+      "Node.js",
+      "Express",
+      "REST API",
+      "MongoDB Atlas",
+      
+    ],
+
+    resources: [
       {
-        icon: "🖼️",
-        title: "Gallery",
-        description: "GPS tracker screenshots",
-        type: "page",
-        path: "gallery",
-      },
-      {
-        icon: "🎥",
-        title: "Demo",
-        description: "Watch the live demonstration",
-        type: "page",
-        path: "demo",
-      },
-      {
-        icon: "📊",
-        title: "Results",
-        description: "Performance and project results",
+        icon: "📄",
+        title: "Project specification",
+        description: "Complete project detailed, woking etc",
         type: "page",
         path: "results",
       },
+      {
+        icon: "💻",
+        title: "Source Code",
+        description: "View the complete source code for frontend",
+        type: "github",
+        owner:"rajeevranjan-023",
+        repo: "rajeevranjan",
+      },
+      {
+        icon: "🌐",
+        title: "Live site",
+        description: "Explore to know more about this website",
+        type: "external",
+        url: "https://www.youtube.com/",
+      }
     ],
   },
+
 //________________________________________________________________________________
 // ===============================================================================
-  "local-finder": {
-    title: "Local Finder",
+  "d7n4c8v2jb": {                                // loco website
+    title: "Added soon!",
 
-    description:
-      "A platform that helps users discover local service providers such as electricians, plumbers, painters and other professionals.",
+    description:[
 
+    ],
     technologies: [
       "React",
       "Node.js",
       "Express",
       "MongoDB",
       "REST API",
+      "MongoDB Atlas",
+      "React.js",
+      "Express.js",
+      "Tailwind css",
+      "ESP32 module",
+      "C++"
     ],
 
-    resources: [
-      {
-        icon: "📄",
-        title: "Project Report",
-        description: "Complete project documentation",
-        type: "pdf",
-        pdfUrl: "/pdf/local-finder-report.pdf",
-      },
-      {
-        icon: "🔬",
-        title: "Research",
-        description: "Research and methodology",
-        type: "page",
-        path: "research",
-      },
-      {
-        icon: "💻",
-        title: "Source Code",
-        description: "View the complete source code",
-        type: "external",
-        url: "https://github.com/yourusername/local-finder",
-      },
-      {
-        icon: "🖼️",
-        title: "Gallery",
-        description: "Project screenshots",
-        type: "page",
-        path: "gallery",
-      },
-      {
-        icon: "🎥",
-        title: "Demo",
-        description: "Watch the project demonstration",
-        type: "page",
-        path: "demo",
-      },
-      {
-        icon: "📊",
-        title: "Results",
-        description: "Project results",
-        type: "page",
-        path: "results",
-      },
-    ],
+    resources: [],
   },
+
+
+  
 };
 //________________________________________________________________________________
 // ===============================================================================
@@ -231,7 +227,7 @@ export default function ProjectDetail() {
   }
 
   const handleResource = (resource) => {
-    if (resource.type === "pdf") {            //pdf viewer
+    if (resource.type === "pdf") {               //pdf viewer
       navigate(`/projects/${projectId}/pdf`, {
         state: {
           pdfUrl: resource.pdfUrl,
@@ -241,16 +237,17 @@ export default function ProjectDetail() {
       return;
     }
 
-    if (resource.type === "page") {          // react page
+    if (resource.type === "page") {              // react page
       navigate(`/projects/${projectId}/${resource.path}`);
       return;
     }
 
-    if (resource.type === "external") {      // External link
-      window.open(resource.url, "_blank");
+    if (resource.type === "external") {          // External link
+      // window.open(resource.url, "_blank");
+      window.location.href = resource.url;
     }
 
-    if (resource.type === "github") {      // github link
+    if (resource.type === "github") {            // github link
      navigate(`/projects/${projectId}/github`, {
       state: {
         OWNER: resource.owner,
@@ -275,9 +272,12 @@ export default function ProjectDetail() {
         <span className="project-label">PROJECT</span>
 
         <h1>{project.title}</h1>
-        <p className="project-description">
-          {project.description}
-        </p>
+
+        <ul>
+          {project.description.map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
+        </ul>
 
         <div className="tech-list">
           {project.technologies.map((tech) => (
