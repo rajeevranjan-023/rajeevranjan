@@ -14,8 +14,10 @@ export default function Education() {
 
       <div className="panel panel-pad reveal" style={{ marginTop: 20 }}>
         <div className="timeline">
+
+          {/* ======================================================================== */}
           <div className="timeline-item">
-              <div className="timeline-dot"></div>
+              <div className="timeline-dot"> <div className="dot-blink"></div></div>
               <div className="timeline-date">2025 — 2029</div>
               <h3>B.Tech, Computer Science &amp; Engineering</h3>
               <div className="org"><a href='https://dhsgsu.edu.in/index.php/en/'>Dr. Hari Singh Gour Central University</a></div>
@@ -24,6 +26,7 @@ export default function Education() {
               </p>
               <span className="timeline-badge">CGPA: 8.96 / 10</span>
           </div>
+           {/* ======================================================================== */}
           <div className="timeline-item">
             <div className="timeline-dot"></div>
             <div className="timeline-date">2025</div>
@@ -32,6 +35,7 @@ export default function Education() {
             <p style={{ margin: 0 }}>Completed senior secondary education.</p>
             <span className="timeline-badge">76.2%</span>
           </div>
+           {/* ======================================================================== */}
           <div className="timeline-item">
             <div className="timeline-dot"></div>
             <div className="timeline-date">2022</div>
@@ -39,20 +43,8 @@ export default function Education() {
             <div className="org"><a href='https://www.cambridgepublicschool.co.in/'>Cambridge Public School (CBSE)</a></div>
             <p style={{ margin: 0 }}>Completed secondary education.</p>
             <span className="timeline-badge">94.0%</span>
-            import SlideViewer from "../components/SlideViewer";
-
-
-      <SlideViewer
-      title="Education Presentation"
-  slides={[
-    "/slides/Slide1.PNG",
-    "/slides/Slide2.PNG",
-    "/slides/Slide3.PNG",
-    "/slides/Slide4.PNG",
-  ]}
-/>
-
           </div>
+           {/* ======================================================================== */}
         </div>
       </div>
     </>
