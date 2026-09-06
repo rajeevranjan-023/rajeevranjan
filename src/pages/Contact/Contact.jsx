@@ -81,7 +81,7 @@ export default function Contact() {
                 LinkedIn Profile
               </a>
             </div>
-          </div>
+          </div> 
           <div className="contact-row">
             <i className="fa-brands fa-github"></i>
             <div>
