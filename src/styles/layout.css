@@ -1,5 +1,5 @@
 
-.app-shell{
+.app-shell{ 
   display: flex;
   min-height: 100vh;
 }
@@ -38,9 +38,10 @@
 }
 
 /* main content shifts right when the sidebar is open */
-.nav-toggle-input:checked ~ .app-shell .main-col{
-  margin-left: 230px;
-}
+/* .nav-toggle-input:checked ~ .app-shell .main-col{
+  /* margin-left: 230px; */
+  /* transform: translateX(230px);
+} */ 
 
 .content{
   flex: 1;

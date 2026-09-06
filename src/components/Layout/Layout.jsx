@@ -26,10 +26,9 @@ export default function Layout() {
       <a id="top"></a>
       <Background />
 
-      {/* pure-CSS mobile/desktop nav toggle (checkbox hack), now controlled by React state */}
       <input
         type="checkbox"
-        id="nav-toggle"
+        id="nav-toggle" 
         className="nav-toggle-input"
         checked={navOpen}
         onChange={toggleNav}

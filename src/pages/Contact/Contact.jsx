@@ -77,7 +77,7 @@ export default function Contact() {
             <i className="fa-brands fa-linkedin-in"></i>
             <div>
               <div style={{ fontSize: 12, color: 'var(--muted)' }}>LinkedIn</div>
-              <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/in/rajeevranjan023" target="_blank" rel="noopener noreferrer">
                 LinkedIn Profile
               </a>
             </div>
@@ -86,7 +86,7 @@ export default function Contact() {
             <i className="fa-brands fa-github"></i>
             <div>
               <div style={{ fontSize: 12, color: 'var(--muted)' }}>GitHub</div>
-              <a href="https://github.com/" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/rajeevranjan-023" target="_blank" rel="noopener noreferrer">
                 GitHub Profile
               </a>
             </div>

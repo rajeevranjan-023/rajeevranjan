@@ -20,7 +20,7 @@ export default function Sidebar() {
 
   return (
     <nav className="sidenav">
-      <NavLink to="/" className="brand">
+      <NavLink to="/" className="brand"> 
         <Logo className="logo-img" />
         <div className="brand-name">
           RAJEEV RANJAN

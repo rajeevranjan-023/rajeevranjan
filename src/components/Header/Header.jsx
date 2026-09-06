@@ -5,7 +5,7 @@ import { getPageMeta } from '../../utils/pageTitles.js'
 export default function Header() {
   const location = useLocation()
   const { toggleTheme, themeIconClass } = useTheme()
-  const { topbar } = getPageMeta(location.pathname)
+  const { topbar } = getPageMeta(location.pathname) 
 
   return (
     <header className="topbar">
