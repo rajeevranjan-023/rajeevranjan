@@ -22,74 +22,129 @@ export default function ProjectInsights() {
   const [issuesOpen, setIssuesOpen] = useState([]);
   const [issuesClosed, setIssuesClosed] = useState([]);
 
+//______________________________________________________________________________________________________________
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+
   useEffect(() => {
-
     if (!OWNER || !REPO) return;
+    const fetchData = async () => {
+      try {
+        // ================= REPO INFO =================
+        const repoRes = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}`);
+        const repoJson = await repoRes.json();
+        setRepoData(repoJson);
+      } catch (err) {
+        console.error("Repo fetch error:", err);
+      }
 
-    // ================= REPO INFO =================
-    fetch(`https://api.github.com/repos/${OWNER}/${REPO}`)
-      .then(res => res.json())
-      .then(setRepoData);
+      try {
+        // ================= COMMITS =================
+        const commitRes = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/commits?per_page=10`);
+        const commitJson = await commitRes.json();
 
-    // ================= COMMITS =================
-    fetch(`https://api.github.com/repos/${OWNER}/${REPO}/commits?per_page=10`)
-      .then(res => res.json())
-      .then((data) => {
-        setCommits(data);
-        setLastCommit(data[0]);
+        if (Array.isArray(commitJson)) {
+          setCommits(commitJson);
+          setLastCommit(commitJson[0]);
 
-        // fetch details of latest commit
-        if (data[0]) {
-          fetch(`https://api.github.com/repos/${OWNER}/${REPO}/commits/${data[0].sha}`)
-            .then(res => res.json())
-            .then(setCommitDetails);
+          if (commitJson[0]) {
+            try {
+              const detailRes = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/commits/${commitJson[0].sha}`);
+              const detailJson = await detailRes.json();
+              setCommitDetails(detailJson);
+            } catch (err) {
+              console.error("Commit details error:", err);
+            }
+          }
         }
-      });
+      } catch (err) {
+        console.error("Commits fetch error:", err);
+      }
 
-    // ================= LANGUAGES =================
-    fetch(`https://api.github.com/repos/${OWNER}/${REPO}/languages`)
-      .then(res => res.json())
-      .then(setLanguages);
+      try {
+        // ================= LANGUAGES =================
+        const langRes = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/languages`);
+        const langJson = await langRes.json();
+        setLanguages(langJson || {});
+      } catch (err) {
+        console.error("Languages error:", err);
+      }
 
-    // ================= CONTRIBUTORS =================
-    fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contributors`)
-      .then(res => res.json())
-      .then(setContributors);
+      try {
+        // ================= CONTRIBUTORS =================
+        const contRes = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contributors`);
+        const contJson = await contRes.json();
+        setContributors(Array.isArray(contJson) ? contJson : []);
+      } catch (err) {
+        console.error("Contributors error:", err);
+      }
 
-    // ================= STATS =================
-    fetch(`https://api.github.com/repos/${OWNER}/${REPO}/stats/commit_activity`)
-      .then(res => res.json())
-      .then(setCommitActivity);
+      try {
+        // ================= STATS =================
+        const activityRes = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/stats/commit_activity`);
+        const activityJson = await activityRes.json();
+        setCommitActivity(Array.isArray(activityJson) ? activityJson : []);
+      } catch (err) {
+        console.error("Commit activity error:", err);
+      }
 
-    fetch(`https://api.github.com/repos/${OWNER}/${REPO}/stats/code_frequency`)
-      .then(res => res.json())
-      .then(setCodeFreq);
+      try {
+        const freqRes = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/stats/code_frequency`);
+        const freqJson = await freqRes.json();
+        setCodeFreq(Array.isArray(freqJson) ? freqJson : []);
+      } catch (err) {
+        console.error("Code frequency error:", err);
+      }
 
-    // ================= BRANCHES =================
-    fetch(`https://api.github.com/repos/${OWNER}/${REPO}/branches`)
-      .then(res => res.json())
-      .then(setBranches);
+      try {
+        // ================= BRANCHES =================
+        const branchRes = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/branches`);
+        const branchJson = await branchRes.json();
+        setBranches(Array.isArray(branchJson) ? branchJson : []);
+      } catch (err) {
+        console.error("Branches error:", err);
+      }
 
-    // ================= RELEASES =================
-    fetch(`https://api.github.com/repos/${OWNER}/${REPO}/releases`)
-      .then(res => res.json())
-      .then(setReleases);
+      try {
+        // ================= RELEASES =================
+        const relRes = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/releases`);
+        const relJson = await relRes.json();
+        setReleases(Array.isArray(relJson) ? relJson : []);
+      } catch (err) {
+        console.error("Releases error:", err);
+      }
 
-    // ================= ISSUES =================
-    fetch(`https://api.github.com/repos/${OWNER}/${REPO}/issues?state=open`)
-      .then(res => res.json())
-      .then(setIssuesOpen);
+      try {
+        // ================= ISSUES =================
+        const openRes = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/issues?state=open`);
+        const openJson = await openRes.json();
+        setIssuesOpen(Array.isArray(openJson) ? openJson : []);
+      } catch (err) {
+        console.error("Open issues error:", err);
+      }
 
-    fetch(`https://api.github.com/repos/${OWNER}/${REPO}/issues?state=closed`)
-      .then(res => res.json())
-      .then(setIssuesClosed);
+      try {
+        const closedRes = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/issues?state=closed`);
+        const closedJson = await closedRes.json();
+        setIssuesClosed(Array.isArray(closedJson) ? closedJson : []);
+      } catch (err) {
+        console.error("Closed issues error:", err);
+      }
 
+    };
+    fetchData();
   }, [OWNER, REPO]);
-
+  
+//______________________________________________________________________________________________________________
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   return (
     <div style={{ padding: "20px", color: "white" }}>
 
-      <h1>📊 Project Insights</h1>
+      <h1>📊 Project Insights 
+        <button style={{ marginLeft: "20px", padding: "5px 10px", cursor: "pointer" }} onClick={() => window.history.back()}>
+          🔙 Back
+        </button>
+        </h1>
 
       {/* ================= BASIC INFO ================= */}
       {repoData && (
@@ -97,8 +152,6 @@ export default function ProjectInsights() {
           <h2>Repo Info</h2>
           <p>📅 Created: {new Date(repoData.created_at).toLocaleString()}</p>
           <p>🔄 Last Updated: {new Date(repoData.updated_at).toLocaleString()}</p>
-          <p>⭐ Stars: {repoData.stargazers_count}</p>
-          <p>🍴 Forks: {repoData.forks_count}</p>
         </div>
       )}
 
@@ -125,7 +178,7 @@ export default function ProjectInsights() {
           {commitDetails.files?.map((file) => (
             <div key={file.filename}>
               <p>{file.filename}</p>
-              <pre style={{ background: "#111", padding: "10px" }}>
+              <pre style={{ background: "#111", padding: "10px", overflowX: "auto" }}>
                 {file.patch}
               </pre>
             </div>

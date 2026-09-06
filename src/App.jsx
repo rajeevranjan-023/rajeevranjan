@@ -43,18 +43,24 @@ export default function App() {
   const [backendReady, setBackendReady] = useState(false);
 
   useEffect(() => {
+
     const initialize = async () => {
       try { 
         const browserID = getBrowserId();
-        await saveUser(browserID,); 
-        // console.log("browserID : ", browserID)
+        const isVisited = sessionStorage.getItem("visited");
+        let userId = null;
+
+        console.log("browserID : ", browserID)
   
-        const res = await saveUser(browserID);
-        const userId = res.data.userId;
-        // console.log("userId: ", userId);
+        if (!isVisited) {
+          const res = await saveUser(browserID);   // single call
+          userId = res.data.userId;
+          sessionStorage.setItem("visited", "true"); // mark session
+        }
+        console.log("userId: ", userId);
 
         await wakeUpServer();
-        // console.log("Backend Ready");
+        console.log("Backend Ready");
         setBackendReady(true);                    // Backend is awake
 
         const locationData = await getLocationData();
@@ -64,7 +70,7 @@ export default function App() {
             userId: userId, 
         })                        
           .then(() => {
-            // console.log("Location Saved");
+            console.log("Location Saved");
           })
           .catch((err) => {
             console.log("Error saving location:", err);
@@ -75,7 +81,27 @@ export default function App() {
     };
     initialize();
   }, []);                                     
+ 
+
+  useEffect(() => {               // TIME TRACKING (NEW)
+    const startTime = Date.now();
+    const browserID = getBrowserId();
+    const handleUnload = () => {
+      const duration = Math.floor((Date.now() - startTime) / 1000);
   
+      navigator.sendBeacon(
+        "/api/save-time",
+        JSON.stringify({
+          browserId: browserID,
+          duration: duration,
+        })
+      );
+    };
+    window.addEventListener("beforeunload", handleUnload);
+    return () => {
+      window.removeEventListener("beforeunload", handleUnload);
+    };
+  }, []);
 
   //_______________________________________
   return (
@@ -97,8 +123,8 @@ export default function App() {
 
 
           <Route path="/projects/:projectId" element={<ProjectDetail />} />
-          <Route path="/:projects/:projectId/pdf" element={<PdfViwer/>} />
-          <Route path="/:projects/:projectId/github" element={<GithubViewer />} />
+          <Route path="/projects/:projectId/pdf" element={<PdfViwer/>} />
+          <Route path="/projects/:projectId/github" element={<GithubViewer />} />
           <Route path="/projects/:projectId/github/insights" element={<ProjectInsights />} />
           
           

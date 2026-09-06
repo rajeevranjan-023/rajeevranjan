@@ -20,23 +20,22 @@ export default function GitHubViewer() {
   // ================================
   // INITIAL LOAD
   // ================================
-  useEffect(() => {
+useEffect(() => {
 
-    if (!OWNER || !REPO) return;
+  if (!OWNER || !REPO) return;
 
-    fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/`)
-      .then((res) => {
-        if (!res.ok) throw new Error(`GitHub API Error: ${res.status}`);
-        return res.json();
-      })
-      .then((data) => {
-        setFiles(data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-
-  }, [OWNER, REPO]);
+  const fetchFiles = async () => {
+    try {
+      const res = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/`);
+      if (!res.ok) throw new Error(`GitHub API Error: ${res.status}`);
+      const data = await res.json();
+      setFiles(Array.isArray(data) ? data : []);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  fetchFiles();
+}, [OWNER, REPO]);
 
   // ================================  OPEN FILE / FOLDER
   const openItem = async (item) => {
