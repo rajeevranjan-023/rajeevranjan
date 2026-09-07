@@ -29,6 +29,7 @@ const NotFound = lazy(() => import('./pages/NotFound/NotFound.jsx'))
 const ProjectDetail = lazy(()=>import('./pages/Projects/project_detail/ProjectDetails.jsx'))
 const PdfViwer = lazy(() => import('./pages/Projects/pdf_Viewer/SlideViewer.jsx'))
 const GithubViewer = lazy(()=>import('./pages/Projects/github_viewer/GitHubViewer.jsx'))
+const PrivateGithubViewer = lazy(()=>import('./pages/Projects/github_viewer/private_git.jsx'))
 const ProjectInsights = lazy(()=>import('./pages/Projects/github_viewer/ProjectInsights.jsx'))
 
 
@@ -125,6 +126,7 @@ export default function App() {
           <Route path="/projects/:projectId" element={<ProjectDetail />} />
           <Route path="/projects/:projectId/pdf" element={<PdfViwer/>} />
           <Route path="/projects/:projectId/github" element={<GithubViewer />} />
+          <Route path="/projects/:projectId/private" element={<PrivateGithubViewer />} />
           <Route path="/projects/:projectId/github/insights" element={<ProjectInsights />} />
           
           

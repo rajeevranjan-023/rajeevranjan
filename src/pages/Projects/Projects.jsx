@@ -70,10 +70,10 @@ export default function Projects() {
         </div>
         {/* =========================================================================================== */}
         <div onClick={() => navigate("/projects/d7n4c8v2jb")} className="panel project-card">
-          <span className="project-tag">------- · AUGUST 2026</span>
+          <span className="project-tag">------- · AUGUST2026: Ongoing</span>
           <h3>-------------------</h3>
           <p>
-Project in <b>progess</b>..... soon updated here...
+            Project in <b>progess</b>..... soon updated here...
           </p>
 
           <div className="project-meta">
@@ -90,7 +90,45 @@ Project in <b>progess</b>..... soon updated here...
             <span className="tech-pill">C++</span>
             <span className="tech-pill">sensor and automations</span>
           </div>
+        </div> 
+        {/* =========================================================================================== */}
+        <div 
+          onClick={() => navigate("/projects/e8v3n6t1ys")} 
+          className="panel project-card"
+        >
+          <span className="project-tag">Full Stack · september2026 : Ongoing</span>
+          <h3>Local Finder (Marketplace + Business Dashboard)</h3>
+          <p>
+            A full-stack location-based platform that helps users find nearby products, services, 
+            and shops with price comparison. Includes seller dashboards with product management, 
+            analytics (profit/loss), credit tracking, and real-time location-based discovery.
+          </p>
+        
+          <div className="project-meta">
+            <span className="tech-pill">HTML</span>
+            <span className="tech-pill">CSS</span>
+            <span className="tech-pill">JavaScript</span>
+            <span className="tech-pill">REST API</span>
+            <span className="tech-pill">MongoDB Atlas</span>
+            <span className="tech-pill">Mongoose</span>
+            <span className="tech-pill">React (Vite)</span>
+            <span className="tech-pill">Node.js</span>
+            <span className="tech-pill">Express.js</span>
+            <span className="tech-pill">REST API</span>
+            <span className="tech-pill">Axios</span>
+            <span className="tech-pill">React Router</span>
+            <span className="tech-pill">Geolocation API</span>
+            <span className="tech-pill">Dynamic Routing</span>
+            <span className="tech-pill">Location-Based Search</span>
+            <span className="tech-pill">Analytics Logic</span>
+            <span className="tech-pill">CRUD Operations</span>
+            <span className="tech-pill">Responsive UI</span>
+            <span className="tech-pill" style={{background: "transparent",color: "#4f46e5",border: "1px dashed #4f46e5",}}>MUCH MORE...</span>
+
+          </div>
         </div>
+        {/* =========================================================================================== */}
+
         {/* =========================================================================================== */}
 
 
@@ -109,3 +147,21 @@ Project in <b>progess</b>..... soon updated here...
     </>
   )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// p4d7c2l9bx
+// z1q8w5e3rt
+// m6n2k9x4ab
+// t7y3u8i1op

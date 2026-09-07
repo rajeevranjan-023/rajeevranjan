@@ -199,6 +199,67 @@ const projects = {
 
     resources: [],
   },
+//________________________________________________________________________________
+// ===============================================================================
+  "e8v3n6t1ys": {                               // Local Finder Platform
+    title: "Local Finder – Nearby Marketplace Platform",
+
+    description: [
+      "A full-stack location-based marketplace platform that connects users with nearby shops and service providers, enabling real-time product discovery, price comparison, and business interaction.",
+      "Includes a powerful seller dashboard for managing products, tracking sales, analyzing profit/loss, and handling customer credit (udhar) with both online and offline data integration.",
+      "Designed with a hybrid approach inspired by Flipkart, Instagram, and Zomato, focusing on intuitive UI, scalability, and real-world usability."
+    ],
+
+  technologies: [
+    "React (Vite)",
+    "JavaScript",
+    "Node.js",
+    "Express.js",
+    "MongoDB Atlas",
+    "Mongoose",
+    "REST API",
+    "Geolocation API",
+    "React Router",
+    "Axios",
+    "CSS / Tailwind CSS",
+    "Responsive Design",
+    "State Management (useState, useEffect)",
+    "CRUD Operations",
+    "Authentication (JWT / Session based)",
+    "Dynamic Routing",
+    "Location-Based Filtering",
+    "Data Visualization (Analytics logic)",
+    "Git & GitHub",
+    "Deployment (Render / Vercel)",
+  ],
+
+    resources: [
+      {
+        icon: "📄",
+        title: "Project Specification",
+        description: "Detailed documentation of system architecture, features, and workflow",
+        type: "page",
+        path: "local-finder-details",
+      },
+      {
+        icon: "💻", 
+        title: "Source Code",
+        description: "View complete frontend and backend implementation",
+        type: "private-github",
+      },
+      {
+        icon: "🌐",
+        title: "Live Demo",
+        description: "Explore the live working platform",
+        type: "external",
+        url: "",
+      }
+    ],
+  }
+
+
+//________________________________________________________________________________
+// ===============================================================================
 
 
   
@@ -248,14 +309,19 @@ export default function ProjectDetail() {
     }
 
     if (resource.type === "github") {            // github link
-     navigate(`/projects/${projectId}/github`, {
-      state: {
-        OWNER: resource.owner,
-        REPO: resource.repo,
-      },
-    });
+      navigate(`/projects/${projectId}/github`, {
+       state: {
+         OWNER: resource.owner,
+         REPO: resource.repo,
+        },
+      });
+    };
 
-  };}
+    if(resource.type=== "private-github"){
+      navigate(`/projects/${projectId}/private`)
+    };
+  
+  }
   //_____________________________________________________________
   return (
     <main className="project-details">
