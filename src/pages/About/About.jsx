@@ -12,11 +12,12 @@ export default function About() {
         <div className="panel panel-pad">
           <h3>Career Objective</h3>
           <p style={{ textAlign: 'justify' }}>
-            Second-year Computer Science & Engineering student at 
-            Dr. Hari Singh Gour Central University, focused on DSA 
-            in C++, full-stack web development (MERN), and embedded 
+            Second-year Computer Science & Engineering student at  
+            <b> Dr. Hari Singh Gour Central University</b>, focused on DSA 
+            in <i> C++</i>, full-stack web development (<i>MERN</i>), and embedded 
             systems. Practical experience includes sensor-based automation 
-            projects and responsive web applications, with an emphasis on 
+            projects and responsive web applications with integrated Artificial Intelligence,
+             with an emphasis on 
             clean, maintainable, and efficient code. Continuous learning
              through hands-on projects and consistent practice across 
              modern web technologies.
@@ -26,11 +27,10 @@ export default function About() {
         <div className="panel panel-pad">
           <h3>About</h3>
           <ul className="project-list" style={{ marginTop: 4 }}>
-            <li>Currently pursuing B.Tech in CSE (2025–29), CGPA 8.96/10</li>
-            <li>Built an automated water-level control system with 100% hands-off operation</li>
-            <li>Shipped a REST-API-powered weather app from scratch</li>
-            <li>Experience with Node.js, Express.js, MongoDB, MySQL, and React.</li>
-            <li>AI Skills Passport certified (Microsoft Elevate &amp; EY, 2026)</li>
+            <li>B.Tech Computer Science & Engineering student (2025–29), CGPA 8.96/10</li>
+            <li>Full Stack Developer skilled in building scalable web applications using React, Node.js, Express, and MongoDB</li>
+            <li>Strong foundation in Data Structures & Algorithms with focus on problem-solving and system design</li>
+            <li>Hands-on experience in real-world projects including automation systems and location-based platforms</li>
           </ul>
         </div>
       </div>
@@ -41,16 +41,18 @@ export default function About() {
       <div className="grid-3">
         <div className="panel panel-pad reveal">
           <i className="fa-solid fa-gears" style={{ color: 'var(--accent-2)', fontSize: 20 }}></i>
-          <h3 style={{ marginTop: 12, fontSize: 16 }}>Problem Solving</h3>
+          <h3 style={{ marginTop: 12, fontSize: 16 }}>Building Real Systems</h3>
           <p style={{ fontSize: 14 }}>
-           Breaking complex problems into smaller, manageable tasks before implementation.
+            Focus on creating systems that work reliably in real environments,
+            not just controlled demos.
           </p>
         </div>
         <div className="panel panel-pad reveal">
           <i className="fa-solid fa-code" style={{ color: 'var(--accent-2)', fontSize: 20 }}></i>
           <h3 style={{ marginTop: 12, fontSize: 16 }}>Strong Fundamentals</h3>
           <p style={{ fontSize: 14 }}>
-           Focus on core Computer Science concepts, C/C++, and Data Structures & Algorithms..
+           Emphasis on clear logic, core computer science concepts,
+           and maintainable architecture.
           </p>
         </div>
         <div className="panel panel-pad reveal">
@@ -58,9 +60,10 @@ export default function About() {
             className="fa-solid fa-arrows-rotate"
             style={{ color: 'var(--accent-2)', fontSize: 20 }}
           ></i>
-          <h3 style={{ marginTop: 12, fontSize: 16 }}>Continuous Improvement</h3>
+          <h3 style={{ marginTop: 12, fontSize: 16 }}>Continuous Refinemen</h3>
           <p style={{ fontSize: 14 }}>
-            Solutions are refined through testing, iteration, and performance improvements.
+            Systems are improved through testing, iteration,
+            and performance optimization over time.
           </p>
         </div>
       </div>

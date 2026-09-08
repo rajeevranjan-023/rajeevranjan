@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import Logo from '../../components/Logo/Logo.jsx'
 import useDocumentTitle from '../../hooks/useDocumentTitle.js'
 
+
 export default function Home() {
   useDocumentTitle('Home')
 
@@ -51,13 +52,16 @@ export default function Home() {
           <div className="stat-label">CGPA / 10</div>
         </div>
         <div className="panel stat-box">
-          <div className="stat-num">2</div>
+          <div className="stat-num">4</div>
           <div className="stat-label">Projects Shipped</div>
         </div>
-        <div className="panel stat-box">
-          <div className="stat-num">12</div>
-          <div className="stat-label">Core Technologies</div>
-        </div>
+        <Link to="/skills">        
+          <div className="panel stat-box">
+            <div className="stat-num">⚙️</div>
+            <div className="stat-label">Core Technologies</div>
+          </div>
+        </Link>
+
         <div className="panel stat-box">
           <div className="stat-num">2</div>
           <div className="stat-label">Certifications</div>
@@ -100,18 +104,20 @@ export default function Home() {
         </Link>
       </div>
       
-      <div className="panel panel-pad reveal">
-        <span className="project-tag">Electromechanical Systems · May–Jul 2025</span>
-        <h3>Smart Water Level Monitoring &amp; Control System</h3>
-        <p>
-          A closed-loop control system that regulates water level automatically using real-time
-          sensor feedback — no manual intervention required.
-        </p>
-        <div className="project-meta">
-          <span className="tech-pill">Sensors</span>
-          <span className="tech-pill">Feedback Control</span>
-          <span className="tech-pill">Automation</span>
-        </div>
+      <div className="panel panel-pad reveal"> 
+        <span className="project-tag">
+          Selected Work · Ongoing
+        </span> 
+        <h3>System Design & Development</h3> 
+        <p> 
+          A collection of real-world systems focused on automation, scalability, 
+          and clean architecture — built with a full-stack and problem-solving approach. 
+        </p> 
+        <div className="project-meta"> 
+          <span className="tech-pill">Full Stack</span> 
+          <span className="tech-pill">Automation</span> 
+          <span className="tech-pill">Problem Solving</span> 
+        </div> 
       </div>
     </>
   )

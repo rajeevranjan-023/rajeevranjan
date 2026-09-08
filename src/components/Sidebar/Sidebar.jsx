@@ -10,7 +10,7 @@ const NAV_ITEMS = [
   { to: '/experience', icon: 'fa-briefcase', label: 'Experience' },
   { to: '/education', icon: 'fa-graduation-cap', label: 'Education' },
   { to: '/certifications', icon: 'fa-certificate', label: 'Certifications' },
-  { to: '/gallery', icon: 'fa-images', label: 'Gallery' },
+  // { to: '/gallery', icon: 'fa-images', label: 'Gallery' },
   { to: '/blog', icon: 'fa-feather-pointed', label: 'Blog' },
   { to: '/contact', icon: 'fa-satellite-dish', label: 'Contact' },
 ]
@@ -39,12 +39,7 @@ export default function Sidebar() {
       </ul>
 
       <div className="side-status mono">
-        <br />
-        CGPA: 8.96 / 10
-        <br />
-        STACK: MERN-ready
-        <br />
-        LOC: Sagar, MP, IN
+
       </div>
     </nav>
   )

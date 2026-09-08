@@ -15,7 +15,7 @@ html{
 
 body{
     margin:0;
-
+    
     background:
         radial-gradient(circle at top left,
         var(--accent-soft),

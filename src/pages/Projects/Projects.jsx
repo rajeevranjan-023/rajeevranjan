@@ -30,7 +30,7 @@ export default function Projects() {
 
         {/* =========================================================================================== */}
 
-        <div onClick={() => navigate("/projects/b4x9m2t7qk")} className="panel project-card">
+        {/* <div onClick={() => navigate("/projects/b4x9m2t7qk")} className="panel project-card">
           <span className="project-tag">Web App · January 2026</span>
           <h3>Weather Application (REST API)</h3>
           <p>
@@ -44,7 +44,7 @@ export default function Projects() {
             <span className="tech-pill">JavaScript</span>
             <span className="tech-pill">REST API</span>
           </div>
-        </div>
+        </div> */}
         
         {/* =========================================================================================== */}
         <div onClick={() => navigate("/projects/c2f9a6t3wz")} className="panel project-card">
@@ -136,12 +136,12 @@ export default function Projects() {
 
       <div className="panel panel-pad reveal" style={{ marginTop: 26 }}>
         <h3 style={{ fontSize: 16 }}>
-          <i className="fa-solid fa-flask" style={{ color: 'var(--accent-2)' }}></i> More builds
-          in the lab
+          <i className="fa-solid fa-flask" style={{ color: 'var(--accent-2)' }}></i> Work in Progress..
+          More Systems Coming Soon:
         </h3>
         <p style={{ margin: 0 }}>
-          Both projects above are shipped and working. This page grows as new builds — mostly
-          full-stack apps and further automation experiments — are completed.
+          This space will evolve with new builds — focused on practical applications,
+          scalable systems, and real-world use cases.
         </p>
       </div>
     </>

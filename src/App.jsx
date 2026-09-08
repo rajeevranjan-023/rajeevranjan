@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout/Layout.jsx'
 import ScrollToTop from './components/Ui/ScrollToTop.jsx'
+import { Toaster } from "react-hot-toast";     //for popup on submit
 
 import { lazy, Suspense, useEffect, useState } from "react";
 
@@ -108,6 +109,7 @@ export default function App() {
   return (
     <Suspense fallback={<RouteFallback />}>
       <ScrollToTop/>
+      <Toaster position="top-right" />
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />

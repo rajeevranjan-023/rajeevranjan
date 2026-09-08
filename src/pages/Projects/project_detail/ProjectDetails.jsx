@@ -87,50 +87,6 @@ const projects = {
   },
 //________________________________________________________________________________
 // ===============================================================================
-   "b4x9m2t7qk": {                      //weather website
-    title: "weather ",
-
-    description:[
-      "A real-time GPS tracking system that displays live vehicle location using GPS hardware, backend APIs and an interactive map.",
-      "Live weather lookup by user-entered location",
-      "Dynamic, responsive interface built with HTML, CSS & JavaScript",
-      "Clean REST API integration and response handling"
-    ],
-    technologies: [
-      "ESP32",
-      "NEO-6M GPS",
-      "Node.js",
-      "Express",
-      "MongoDB",
-      "React",
-      "Leaflet",
-    ],
-
-    resources: [
-      {
-        icon: "📄",
-        title: "Project specification",
-        description: "Complete project detailed, woking etc",
-        type: "page",
-        path: "results",
-      },
-      {
-        icon: "💻",
-        title: "Source Code",
-        description: "View the complete source code for frontend",
-        type: "github",
-        owner:"rajeevranjan-023",
-        repo: "rajeevranjan",
-      },
-      {
-        icon: "🌐",
-        title: "Live site",
-        description: "Explore to know more about this website",
-        type: "external",
-        url: "https://www.youtube.com/",
-      }
-    ],
-  },
 
 //________________________________________________________________________________
 // ===============================================================================
