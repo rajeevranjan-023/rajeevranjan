@@ -5,11 +5,10 @@ import { Toaster } from "react-hot-toast";     //for popup on submit
 
 import { lazy, Suspense, useEffect, useState } from "react";
 
-import { wakeUpServer, saveLocation, saveUser } from "./api";
-import { getLocationData } from "./utils/location.js";
- 
+import { wakeUpServer, saveUser } from "./api";
+import { useAnalyticsInit, useAnalyticsPageView } from "./hooks/useAnalytics.js";
+
 import './app.css'
-import LocationERROR from './pages/NotFound/LocationERROR.jsx';
 
 import { getBrowserId } from "./utils/userId";
 
@@ -26,94 +25,52 @@ const Blog = lazy(() => import('./pages/Blog/Blog.jsx'))
 const Contact = lazy(() => import('./pages/Contact/Contact.jsx'))
 const NotFound = lazy(() => import('./pages/NotFound/NotFound.jsx'))
 
-
-const ProjectDetail = lazy(()=>import('./pages/Projects/project_detail/ProjectDetails.jsx'))
+const ProjectDetail = lazy(() => import('./pages/Projects/project_detail/ProjectDetails.jsx'))
 const PdfViwer = lazy(() => import('./pages/Projects/pdf_Viewer/SlideViewer.jsx'))
-const GithubViewer = lazy(()=>import('./pages/Projects/github_viewer/GitHubViewer.jsx'))
-const PrivateGithubViewer = lazy(()=>import('./pages/Projects/github_viewer/private_git.jsx'))
-const ProjectInsights = lazy(()=>import('./pages/Projects/github_viewer/ProjectInsights.jsx'))
-
-
+const GithubViewer = lazy(() => import('./pages/Projects/github_viewer/GitHubViewer.jsx'))
+const PrivateGithubViewer = lazy(() => import('./pages/Projects/github_viewer/private_git.jsx'))
+const ProjectInsights = lazy(() => import('./pages/Projects/github_viewer/ProjectInsights.jsx'))
 
 function RouteFallback() {
   return null
 }
 
 export default function App() {
-  
-  //_______________________________________
-  const [backendReady, setBackendReady] = useState(false);
+  const [userId, setUserId] = useState(null);
+
 
   useEffect(() => {
-
     const initialize = async () => {
-      try { 
+      try {
         const browserID = getBrowserId();
         const isVisited = sessionStorage.getItem("visited");
-        let userId = null;
 
-        console.log("browserID : ", browserID)
-  
         if (!isVisited) {
-          const res = await saveUser(browserID);   // single call
-          userId = res.data.userId;
-          sessionStorage.setItem("visited", "true"); // mark session
+          const res = await saveUser(browserID);
+          setUserId(res.data.userId);
+          sessionStorage.setItem("visited", "true");
         }
-        console.log("userId: ", userId);
 
         await wakeUpServer();
-        console.log("Backend Ready");
-        setBackendReady(true);                    // Backend is awake
-
-        const locationData = await getLocationData();
-        await saveLocation({
-            ...locationData,
-            browserId: browserID,
-            userId: userId, 
-        })                        
-          .then(() => {
-            console.log("Location Saved");
-          })
-          .catch((err) => {
-            console.log("Error saving location:", err);
-          });
       } catch (err) {
-        console.log("FULL ERROR:", err);
+        console.log("Backend init error:", err.message);
       }
     };
     initialize();
-  }, []);                                     
- 
-
-  useEffect(() => {               // TIME TRACKING (NEW)
-    const startTime = Date.now();
-    const browserID = getBrowserId();
-    const handleUnload = () => {
-      const duration = Math.floor((Date.now() - startTime) / 1000);
-  
-      navigator.sendBeacon(
-        "/api/save-time",
-        JSON.stringify({
-          browserId: browserID,
-          duration: duration,
-        })
-      );
-    };
-    window.addEventListener("beforeunload", handleUnload);
-    return () => {
-      window.removeEventListener("beforeunload", handleUnload);
-    };
   }, []);
 
-  //_______________________________________
+
+  useAnalyticsInit(userId);
+  useAnalyticsPageView();
+
   return (
     <Suspense fallback={<RouteFallback />}>
-      <ScrollToTop/>
+      <ScrollToTop />
       <Toaster position="top-right" />
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} /> 
+          <Route path="/about" element={<About />} />
           <Route path="/skills" element={<Skills />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/experience" element={<Experience />} />
@@ -124,17 +81,11 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
 
-
           <Route path="/projects/:projectId" element={<ProjectDetail />} />
-          <Route path="/projects/:projectId/pdf" element={<PdfViwer/>} />
+          <Route path="/projects/:projectId/pdf" element={<PdfViwer />} />
           <Route path="/projects/:projectId/github" element={<GithubViewer />} />
           <Route path="/projects/:projectId/private" element={<PrivateGithubViewer />} />
           <Route path="/projects/:projectId/github/insights" element={<ProjectInsights />} />
-          
-          
-          
-
-          
         </Route>
       </Routes>
     </Suspense>
