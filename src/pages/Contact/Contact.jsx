@@ -23,6 +23,14 @@ export default function Contact() {
         const anonymousId = getAnonymousId();
         const res = await saveUser(browserId);
         setIds({ userId: res.data.userId, anonymousId });
+
+        if (res.data.latestName || res.data.latestEmail) {
+          setForm((prev) => ({
+            ...prev,
+            name: res.data.latestName || prev.name,
+            email: res.data.latestEmail || prev.email,
+          }));
+        }
       } catch (err) {
         // Non-fatal: the contact form still works without a userId attached.
         console.log("Visitor id lookup failed:", err.message);
